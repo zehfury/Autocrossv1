@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="register.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+ 
+<div class="container">
+    <!-- Back to Homepage Button -->
+    <a href="index.html" class="back-home-btn">
+        <i class="fas fa-arrow-left"></i>
+        Back to Homepage
+    </a>
+    
+    <form method="post" action="" name="registration-form" class="registration-wizard">
+        <h4>Registration Form</h4>
+
+        <!-- Stepper -->
+        <ol class="stepper" aria-label="Registration steps">
+            <li class="step current">Member Info</li>
+            <li class="step">Racing Info</li>
+            <li class="step">Car Info</li>
+            <li class="step">Other Info</li>
+        </ol>
+
+        <!-- Security Notice - Moved below title -->
+        <div class="security-notice">
+            <i class="fas fa-shield-alt"></i>
+            <strong>Security Notice:</strong> Your data is protected with encryption and will only be used for event registration purposes. We never share your personal information with third parties.
+        </div>
+
+        <fieldset class="form-step active" data-step="0">
+            <legend>Member Info</legend>
+            <input type="text" name="full-name" placeholder="Full Name" required>
+            <input type="text" name="nickname" placeholder="Nickname (if any)">
+            <input type="tel" name="mobile-number" placeholder="Mobile Number" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="birthdate" placeholder="Birthdate" required>
+            <input type="text" name="emergency-contact" placeholder="Emergency Contact Name & Number" required>
+        </fieldset>
+
+        <fieldset class="form-step" data-step="1">
+            <legend>Racing Info</legend>
+            <select name="experience-level" required>
+                <option value="" disabled selected>Experience Level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+            <input type="number" name="race-number-preference" placeholder="Race Number Preference (if any)">
+        </fieldset>
+
+        <fieldset class="form-step" data-step="2">
+            <legend>Car Info</legend>
+            <input type="text" name="car-make-model" placeholder="Car Make & Model" required>
+            <input type="number" name="car-year" placeholder="Year (YYYY)" min="1900" max="2099" step="1" pattern="[0-9]{4}" title="Please enter a 4-digit year (e.g., 2020)" required>
+            <select name="engine-size" required>
+                <option value="" disabled selected>Engine Size Range</option>
+                <option value="1.0-1.5">1.0 - 1.5 L</option>
+                <option value="1.5-2.0">1.5 - 2.0 L</option>
+                <option value="2.0+">2.0+ L</option>
+            </select>
+            <select name="transmission" required>
+                <option value="" disabled selected>Transmission (AT / MT)</option>
+                <option value="AT">Automatic (AT)</option>
+                <option value="MT">Manual (MT)</option>
+            </select>
+            <select name="turbo-supercharged" required>
+                <option value="" disabled selected>Turbo / Supercharged? (Yes / No)</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <textarea name="basic-mods" rows="3" placeholder="Basic Mods (if any)"></textarea>
+        </fieldset>
+
+        <fieldset class="form-step" data-step="3">
+            <legend>Other Info</legend>
+            <input type="text" name="license-number" placeholder="Driver’s License Number" required>
+            <select name="helmet" required>
+                <option value="" disabled selected>Helmet (Own / Need to Borrow)</option>
+                <option value="Own">Own</option>
+                <option value="Borrow">Need to Borrow</option>
+            </select>
+            <select name="t-shirt-size" required>
+                <option value="" disabled selected>T-shirt Size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
+            </select>
+            <select name="help-organize" required>
+                <option value="" disabled selected>Willing to Help Organize? (Yes / No)</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </fieldset>
+
+        <!-- Wizard actions -->
+        <div class="form-actions">
+            <button type="button" id="prevBtn" class="nav-btn prev" aria-label="Go to previous step">Back</button>
+            <button type="button" id="nextBtn" class="nav-btn next" aria-label="Go to next step">Next</button>
+            <input type="submit" value="Submit Registration" id="submit" class="submit-btn">
+        </div>
+    </form>
+   </div>
+   <script src="register.js"></script>
+</body>
+</html>

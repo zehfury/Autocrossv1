@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Autocross Club of Negros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="ACN Logo">
+                <span>AUTOCROSS CLUB OF NEGROS</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html">HOME</a>
+                <a href="index.html#events">EVENTS</a>
+                <a href="#" class="active">PHOTO GALLERY</a>
+                <a href="index.html#merchandise">MERCHANDISE</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Back to Homepage Button -->
+            <a href="index.html" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Homepage
+            </a>
+            
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>SAMPLE GALLERY</h1>
+                <p>Under Development</p>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="photo-grid" id="photoGrid">
+                <!-- Photos will be loaded here -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-section">
+                <button class="load-more-btn" id="loadMoreBtn">Load More Photos</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img class="lightbox-image" id="lightboxImage" src="/placeholder.svg" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+            <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
+            <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+        </div>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>

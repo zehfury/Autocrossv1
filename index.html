@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocross Club of Negros - Where Speed Meets Precision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner" id="topBanner">
+        <div class="container">
+            <span>AUTOCROSS - REGISTRATION NOW OPEN!</span>
+            <button class="banner-close" onclick="closeBanner()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="navbar-logo">
+                <img src="assets/logo.png" alt="ACN Logo" class="navbar-logo-img">
+                <span>AUTOCROSS CLUB OF NEGROS</span>
+            </a>
+            <div class="navbar-links" id="navLinks">
+                <a href="#events">EVENTS</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#merchandise">MERCHANDISE</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="navbar-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <a href="register.html" class="btn btn-primary cta-button">Register Now</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-image hero-image-left">
+                <img src="/assets/homepage1.png" alt="Autocross Car 1">
+            </div>
+            <div class="hero-image hero-image-center">
+                <img src="/assets/homepage2.png" alt="Autocross Action">
+            </div>
+            <div class="hero-image hero-image-right">
+                <img src="/assets/homepage3.png" alt="Autocross Car 2">
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-logo fade-in">
+                <img src="assets/logo.png" alt="ACN Logo">
+            </div>
+            <h1 class="hero-title fade-in">AUTOCROSS CLUB OF NEGROS</h1>
+            <p class="hero-description fade-in">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis</p>
+            <div class="hero-buttons fade-in">
+                <a href="register.html" class="btn btn-primary hero-register">REGISTER</a>
+                <a href="#events" class="btn btn-secondary hero-learn">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2 class="section-title slide-up">EVENTS</h2>
+            <div class="events-grid">
+                <div class="event-card slide-up">
+                    <div class="event-image">
+                        <img src="/assets/poster.jpg" alt="Racing for Dummies">
+                    </div>
+                    <div class="event-content">
+                        <h3>RACING FOR DUMMIES</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate.</p>
+                    </div>
+                </div>
+                <div class="event-card slide-up">
+                    <div class="event-image">
+                        <img src="/assets/daddies.jpg" alt="Daddies Day Out">
+                    </div>
+                    <div class="event-content">
+                        <h3>DADDIES DAY OUT AUTOCROSS</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate.</p>
+                    </div>
+                </div>
+                <div class="event-card slide-up">
+                    <div class="event-image">
+                        <img src="/assets/championship.jpg" alt="Gymkhana Championship">
+                    </div>
+                    <div class="event-content">
+                        <h3>GYMKHANA CHAMPIONSHIP</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate.</p>
+                    </div>
+                </div>
+                <div class="event-card slide-up">
+                    <div class="event-image">
+                        <img src="/assets/specialmodule.jpg" alt="Special Module">
+                    </div>
+                    <div class="event-content">
+                        <h3>SPECIAL MODULE</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="events-cta">
+                <a href="#" class="btn btn-primary events-updates-btn">GET UPDATES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title slide-up">GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item slide-up" data-index="0" data-image="/assets/cars/japan.jpg" data-title="Honda Hatchback" data-description="Sample Description">
+                    <img src="/assets/cars/japan.jpg" alt="Racing Action" loading="lazy">
+                </div>
+                <div class="gallery-item slide-up" data-index="1" data-image="/assets/cars/mx5.jpg" data-title="Mazda MX-5" data-description="Grey MX-5 showcasing precision driving">
+                    <img src="/assets/cars/mx5.jpg" alt="Autocross Racing" loading="lazy">
+                </div>
+                <div class="gallery-item slide-up" data-index="2" data-image="/assets/cars/wrx.jpg" data-title="Subaru WRX STI" data-description="White WRX with gold wheels and rear wing">
+                    <img src="/assets/cars/wrx.jpg" alt="Competition" loading="lazy">
+                </div>
+                <div class="gallery-item slide-up" data-index="3" data-image="/assets/cars/hatch.jpg" data-title="Honda Civic Hatchback" data-description="White Civic hatchback in competition">
+                    <img src="/assets/cars/hatch.jpg" alt="Racing Cars" loading="lazy">
+                </div>
+                <div class="gallery-item slide-up" data-index="4" data-image="/assets/cars/crv.jpg" data-title="Honda CR-Z" data-description="Black CR-Z with orange accents">
+                    <img src="/assets/cars/crv.jpg" alt="Track Events" loading="lazy">
+                </div>
+                <div class="gallery-item slide-up" data-index="5" data-image="/assets/cars/civic.jpg" data-title="Honda Civic Sedan" data-description="White Civic sedan with black wheels">
+                    <img src="/assets/cars/civic.jpg" alt="Championship" loading="lazy">
+                </div>
+            </div>
+            
+            <!-- View All Photos Button -->
+            <div class="gallery-cta slide-up">
+                <a href="/gallery.html" class="btn btn-primary gallery-view-all">
+                    VIEW ALL
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <div class="video-overlay">
+                <button class="play-button" aria-label="Play video">
+                    <i class="fas fa-play"></i>
+                </button>
+            </div>
+            <div class="video-controls">
+                <button class="pause-button" aria-label="Pause video" style="display: none;">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
+            <video poster="/assets/bryan.mp4" preload="metadata">
+                <source src="/assets/bryan.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- Drivers/Teams Section -->
+    <section class="drivers-teams-section">
+        <div class="container">
+            <div class="drivers-teams-header">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="drivers">DRIVERS</button>
+                    <button class="tab-btn" data-tab="teams">TEAMS</button>
+                </div>
+                <div class="view-all-container">
+                    <a href="#" class="view-all-btn">VIEW ALL</a>
+                    <div class="carousel-nav">
+                        <button class="nav-btn prev-btn" aria-label="Previous">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-btn next-btn" aria-label="Next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="drivers-carousel-container">
+                <div class="tab-content active" id="drivers">
+                    <div class="drivers-carousel-track">
+                        <div class="carousel-item">
+                            <img src="/assets/driver1.jpg" alt="Driver 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver2.jpg" alt="Driver 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver3.png" alt="Driver 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver4.jpg" alt="Driver 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver5.jpg" alt="Driver 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver6.jpg" alt="Driver 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/driver7.jpg" alt="Driver 5">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="teams">
+                    <div class="drivers-carousel-track">
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/mclaren.jpg" alt="Formula 1">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/mercedes.jpg" alt="Petronas">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/ferrari.jpg" alt="Red Bull Racing">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/redbull.jpg" alt="McLaren">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/kick.jpg" alt="Ferrari">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/aston.jpg" alt="Mercedes">
+                        </div>
+                        <div class="carousel-item team-logo">
+                            <img src="/assets/teams/alpine.jpg" alt="Alpine">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="merchandise" class="collections-section">
+        <div class="container">
+            <h2 class="section-title">COLLECTIONS</h2>
+            
+            <div class="collections-container">
+                <!-- T-Shirts Collection -->
+                <div class="collection-item active" data-collection="tshirts">
+                    <div class="product-showcase">
+                        <div class="background-products">
+                            <div class="bg-product left">
+                                <img src="/assets/apparels/tshirt3-green.png" alt="Green T-Shirt">
+                            </div>
+                            <div class="bg-product right">
+                                <img src="/assets/apparels/tshirt1-black.png" alt="Black T-Shirt">
+                            </div>
+                        </div>
+                        <div class="featured-product">
+                            <img src="/assets/apparels/tshirt2-yellow.png" alt="Yellow T-Shirt">
+                        </div>
+                    </div>
+                    <div class="collection-dots">
+                        <span class="dot active" data-color="yellow"></span>
+                        <span class="dot" data-color="green"></span>
+                        <span class="dot" data-color="black"></span>
+                    </div>
+                </div>
+                
+                <!-- Polo Shirts Collection -->
+                <div class="collection-item" data-collection="polos">
+                    <div class="product-showcase">
+                        <div class="background-products">
+                            <div class="bg-product left">
+                                <img src="/assets/apparels/polo2-yellow.png" alt="Yellow Polo">
+                            </div>
+                            <div class="bg-product right">
+                                <img src="/assets/apparels/polo3-black.png" alt="Black Polo">
+                            </div>
+                        </div>
+                        <div class="featured-product">
+                            <img src="/assets/apparels/polo1-green.png" alt="Green Polo">
+                        </div>
+                    </div>
+                    <div class="collection-dots">
+                        <span class="dot active" data-color="green"></span>
+                        <span class="dot" data-color="yellow"></span>
+                        <span class="dot" data-color="black"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <h2 class="section-title">PARTNERS</h2>
+            
+            <div class="partners-grid">
+                <div class="partner-item">
+                    <img src="/assets/partners/1.png" alt="Auto-Centric" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">AUTO-CENTRIC</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/2.png" alt="CN Negros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">CN<br>NEGROS</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/3.png" alt="LRC Solar Industrial" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">LRC<br>SOLAR<br>INDUSTRIAL</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/4.png" alt="Oil Seven" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">OIL<br>SEVEN</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/5.png" alt="Skids" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">Skids</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/6.png" alt="Megaworld" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">MEGAWORLD</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/7.png" alt="Northill Gateway" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">NORTHILL<br>GATEWAY</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/8.png" alt="MotorSport Development Program" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">MotorSport<br>DEVELOPMENT PROGRAM</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/9.png" alt="Tops 88 Car Wash" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">TOPS 88<br>CAR WASH</span>
+                </div>
+                <div class="partner-item">
+                    <img src="/assets/partners/9-01.png" alt="Tops 88 Car Wash" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="partner-name" style="display:none;">OPEN FOR <br>NEW PARTNER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-section footer-top">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="ACN Logo">
+                        <h3>AUTOCROSS CLUB OF NEGROS</h3>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>SCHEDULE</h4>
+                        </div>
+                        <div class="footer-column">
+                            <h4>DRIVERS</h4>
+                        </div>
+                        <div class="footer-column">
+                            <h4>TEAMS</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-section footer-middle">
+            <div class="container">
+                <!-- Middle section content can be added here -->
+            </div>
+        </div>
+        <div class="footer-section footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2025 Autocross Club of Negros. All rights reserved.</p>
+                <p class="credit">Prepared and Presented by Skids</p>
+                <div class="dev-credit">
+                    <img src="assets/lowgo2.jpg" alt="Website by Skids">
+                    <span>Website Development by James Dominic Pama</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="galleryModal" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="galleryModalClose">&times;</span>
+            <img class="lightbox-image" id="galleryModalImage" src="" alt="Gallery Image">
+            <div class="lightbox-caption" id="galleryModalCaption"></div>
+            <button class="lightbox-prev" id="galleryModalPrev">&#10094;</button>
+            <button class="lightbox-next" id="galleryModalNext">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Gallery Section -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img class="lightbox-image" id="lightboxImage" src="/placeholder.svg" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+            <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
+            <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- View All Drivers/Teams Modal -->
+    <div class="view-all-modal" id="viewAllModal">
+        <div class="view-all-content">
+            <div class="view-all-header">
+                <h2 id="viewAllTitle">ALL DRIVERS</h2>
+                <span class="view-all-close" id="viewAllClose">&times;</span>
+            </div>
+            <div class="view-all-tabs">
+                <button class="view-all-tab-btn active" data-view-tab="drivers">DRIVERS</button>
+                <button class="view-all-tab-btn" data-view-tab="teams">TEAMS</button>
+            </div>
+            <div class="view-all-grid" id="viewAllGrid">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+<div id="comingSoonModal" class="lightbox">
+  <div class="lightbox-content" style="background:#000000; color:#fdfdfd; border-radius:12px; padding:40px 30px; text-align:center; min-width:240px; position:relative;">
+    <span class="lightbox-close" id="comingSoonClose" style="position:absolute;top:10px;right:20px;cursor:pointer;font-size:28px;">&times;</span>
+    <h2 style="margin-bottom:18px;">Coming soon</h2>
+    <p>Updates will be available soon. Stay tuned!</p>
+  </div>
+</div>
+
+    <!-- Floating Register CTA - Mobile Only -->
+    <a href="register.html" class="floating-register-cta" id="floatingCta">
+        Register Now
+    </a>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
