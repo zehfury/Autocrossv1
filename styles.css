@@ -1134,7 +1134,7 @@ body {
 
 .event-date {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 400;
     margin-bottom: 10px;
     background: linear-gradient(135deg, #FFD700, var(--primary-orange));
@@ -1574,7 +1574,7 @@ body {
     flex-direction: column;
 }
 
-.event-date {
+.event-card .event-date {
     color: #01764F;
     font-size: 16px;
     font-weight: 600;
@@ -1586,7 +1586,7 @@ body {
     gap: 8px;
 }
 
-.event-date::before {
+.event-card .event-date::before {
     content: '📅';
     font-size: 14px;
 }
@@ -1646,7 +1646,7 @@ body {
     text-align: center;
 }
 
-.event-date {
+.event-meta .event-date {
     color: #F18A1F;
     font-weight: 700;
     font-size: 14px;
@@ -1677,6 +1677,9 @@ body {
     line-height: 1.3;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .event-content p {
@@ -1717,8 +1720,12 @@ body {
     }
     
     .event-content h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-bottom: 12px;
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .event-content p {
@@ -1752,8 +1759,12 @@ body {
     }
     
     .event-content h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin-bottom: 10px;
+        line-height: 1.1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .event-content p {
@@ -2285,16 +2296,6 @@ body {
         height: 300px;
     }
     
-    .bg-product.left {
-        left: 5%;
-        transform: scale(0.6);
-    }
-    
-    .bg-product.right {
-        right: 5%;
-        transform: scale(0.6);
-    }
-    
     /* Fix event date alignment in mobile */
     .event-card .event-date {
         display: flex;
@@ -2310,6 +2311,79 @@ body {
         font-size: 14px;
         margin-right: 8px;
         flex-shrink: 0;
+    }
+}
+
+/* Responsive event date styles */
+@media (max-width: 768px) {
+    .event-date {
+        font-size: 1.6rem !important;
+        margin-bottom: 8px;
+    }
+    
+    .event-card .event-date {
+        font-size: 13px !important;
+        margin: 6px 0 12px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-date {
+        font-size: 1.3rem !important;
+        margin-bottom: 6px;
+    }
+    
+    .event-card .event-date {
+        font-size: 11px !important;
+        margin: 5px 0 10px 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .event-date {
+        font-size: 1.1rem !important;
+        margin-bottom: 5px;
+    }
+    
+    .event-card .event-date {
+        font-size: 10px !important;
+        margin: 4px 0 8px 0;
+    }
+    
+    .event-content h3 {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+        line-height: 1.1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+    .event-date {
+        font-size: 1rem !important;
+        margin-bottom: 4px;
+    }
+    
+    .event-card .event-date {
+        font-size: 9px !important;
+        margin: 3px 0 6px 0;
+    }
+    
+    .event-content h3 {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+        line-height: 1.1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .event-content p {
+        font-size: 11px;
+        line-height: 1.3;
     }
 }
 
@@ -2607,7 +2681,7 @@ body {
         font-size: 3rem;
     }
 
-    .event-date {
+    .hero .event-date {
         font-size: 2rem;
     }
 
@@ -2795,7 +2869,7 @@ body {
 }
 
 /* Force all text to white for dark mode */
-body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text-dark, .navbar a, .footer, .footer a, .event-date, .event-location, .event-card, .merch-item, .btn, .btn-primary, .btn-secondary, .btn-outline, .section-title, h1, h2, h3, h4, h5, h6 {
+body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text-dark, .navbar a, .footer, .footer a, .event-location, .event-card, .merch-item, .btn, .btn-primary, .btn-secondary, .btn-outline, .section-title, h1, h2, h3, h4, h5, h6 {
   color: #fff !important;
 }
 
@@ -3171,6 +3245,15 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
 .carousel-coverflow .swiper-button-prev::after {
   font-size: 16px;
   font-weight: bold;
+  content: '';
+}
+
+.carousel-coverflow .swiper-button-next::after {
+  content: '›';
+}
+
+.carousel-coverflow .swiper-button-prev::after {
+  content: '‹';
 }
 
 /* Keep navigation buttons visible on mobile */
@@ -3184,6 +3267,14 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
   .carousel-coverflow .swiper-button-next::after,
   .carousel-coverflow .swiper-button-prev::after {
     font-size: 14px;
+  }
+  
+  .carousel-coverflow .swiper-button-next::after {
+    content: '›';
+  }
+  
+  .carousel-coverflow .swiper-button-prev::after {
+    content: '‹';
   }
 }
 
@@ -3797,6 +3888,8 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .event-details-content {
@@ -3809,6 +3902,9 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .event-details-close {
@@ -3891,6 +3987,7 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
     background: #1a1a1a;
     display: flex;
     flex-direction: column;
+    flex: 1;
     min-height: 0;
 }
 
@@ -3928,10 +4025,13 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
 
 .event-details-content {
     padding: 20px 40px;
-    max-height: 700px;
+    max-height: 400px;
     overflow-y: auto;
     flex: 1;
     background: #1a1a1a;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
 }
 
 .event-tab-content {
@@ -4083,6 +4183,23 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
 
 /* Responsive Design for Event Details Modal */
 @media (max-width: 768px) {
+    .event-details-modal.active {
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+    
+    .event-details-content {
+        width: 95%;
+        max-height: calc(100vh - 40px);
+        border-radius: 12px;
+        margin: 0 auto;
+    }
+    
+    .event-details-content .event-details-content {
+        padding: 20px 15px;
+        max-height: 300px;
+    }
+    
     .event-details-header {
         flex-direction: column;
     }
@@ -4121,11 +4238,6 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
         letter-spacing: 0.5px;
     }
     
-    .event-details-content {
-        padding: 25px 20px;
-        max-height: 650px;
-    }
-    
     .event-tab-content h3 {
         font-size: 1.3rem;
         margin-bottom: 18px;
@@ -4156,6 +4268,7 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
         flex-direction: column;
         gap: 15px;
         align-items: center;
+        flex-shrink: 0;
     }
     
     .event-register-btn,
@@ -4171,9 +4284,19 @@ body, p, a, span, li, label, input, textarea, select, th, td, .text-black, .text
 
 /* Extra small mobile devices */
 @media (max-width: 480px) {
+    .event-details-modal.active {
+        padding: 10px 0;
+    }
+    
     .event-details-content {
-        padding: 20px 15px;
-        max-height: 400px;
+        width: 98%;
+        max-height: calc(100vh - 20px);
+        border-radius: 8px;
+    }
+    
+    .event-details-content .event-details-content {
+        padding: 15px 12px;
+        max-height: 250px;
     }
     
     .event-details-title {
