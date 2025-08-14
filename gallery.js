@@ -1,438 +1,358 @@
 // Simple Gallery JavaScript
 class SimpleGallery {
     constructor() {
-      this.photos = []
-      this.currentPhotoIndex = 0
-      this.photosPerPage = 12 // Reduced for better performance
-      this.currentPage = 1
-      this.isLoading = false
-      this.imageCache = new Set() // Cache for loaded images
-  
-      this.init()
+        this.photos = []
+        this.currentPhotoIndex = 0
+        this.photosPerPage = 12
+        this.currentPage = 1
+        this.isLoading = false
+        
+        this.init()
     }
-  
+
     init() {
-      this.loadPhotos()
-      this.bindEvents()
-      this.renderPhotos()
-      this.preloadNextPage() // Preload next page images
+        this.loadPhotos()
+        this.bindEvents()
+        this.renderPhotos()
     }
-  
+
     loadPhotos() {
-      // Sample photo data - replace with your actual photos
-      this.photos = [
-        {
-          id: 1,
-          src: "/assets/cars/gallery/101.jpg",
-          title: "Championship Action - Mitsubishi Lancer Evolution V",
-          caption: "Intense racing action during the championship finals",
-        },
-        {
-          id: 2,
-          src: "/assets/cars/gallery/102.jpg",
-          title: "Precision Driving - Mazda MX-5 Miata",
-          caption: "Perfect cornering technique through the chicane",
-        },
-        {
-          id: 3,
-          src: "/assets/cars/gallery/103.jpg",
-          title: "Subaru WRX STI Portrait",
-          caption: "Championship-winning Subaru WRX STI",
-        },
-        {
-          id: 4,
-          src: "/assets/cars/gallery/104.jpg",
-          title: "Event Day 1",
-          caption: "Opening day of the Spring Championship",
-        },
-        {
-          id: 5,
-          src: "/assets/cars/gallery/105.jpg",
-          title: "Behind the Scenes",
-          caption: "Team preparation and setup",
-        },
-        {
-            id: 6,
-            src: "/assets/cars/gallery/106.jpg",
-            title: "Championship Poster",
-            caption: "Official event promotional material",
+        // Event photos - using actual available gallery images
+        this.photos = [
+            {
+                id: 1,
+                src: "/assets/cars/gallery/101.jpg",
+                title: "Championship Action - Mitsubishi Lancer Evolution V",
+                caption: "Intense racing action during the championship finals"
             },
-        {
+            {
+                id: 2,
+                src: "/assets/cars/gallery/102.jpg",
+                title: "Precision Driving - Mazda MX-5 Miata",
+                caption: "Perfect cornering technique through the chicane"
+            },
+            {
+                id: 3,
+                src: "/assets/cars/gallery/103.jpg",
+                title: "Subaru WRX STI Portrait",
+                caption: "Championship-winning Subaru WRX STI"
+            },
+            {
+                id: 4,
+                src: "/assets/cars/gallery/104.jpg",
+                title: "Event Day 1",
+                caption: "Opening day of the Spring Championship"
+            },
+            {
+                id: 5,
+                src: "/assets/cars/gallery/105.jpg",
+                title: "Behind the Scenes",
+                caption: "Team preparation and setup"
+            },
+            {
+                id: 6,
+                src: "/assets/cars/gallery/106.jpg",
+                title: "Championship Action",
+                caption: "High-speed cornering action"
+            },
+            {
                 id: 7,
                 src: "/assets/cars/gallery/107.jpg",
-                title: "Championship Poster",
-                caption: "Official event promotional material",
-                },
-        {
-                    id: 6,
-                    src: "/assets/cars/gallery/108.jpg",
-                    title: "Championship Poster",
-                    caption: "Official event promotional material",
-                    }, // Add more photos with placeholder images  
-                    {
-                      id: 7,
-                      src: "/assets/cars/gallery/109.jpg",
-                      title: "Championship Poster",
-                      caption: "Official event promotional material",
-                      },
-                      {
-                        id: 7,
-                        src: "/assets/cars/gallery/91.jpg",
-                        title: "Championship Poster",
-                        caption: "Official event promotional material",
-                        },
-                        {
-                          id: 7,
-                          src: "/assets/cars/gallery/92.jpg",
-                          title: "Championship Poster",
-                          caption: "Official event promotional material",
-                          },
-                          {
-                            id: 7,
-                            src: "/assets/cars/gallery/93.jpg",
-                            title: "Championship Poster",
-                            caption: "Official event promotional material",
-                            },
-                            {
-                              id: 7,
-                              src: "/assets/cars/gallery/94.jpg",
-                              title: "Championship Poster",
-                              caption: "Official event promotional material",
-                              },
-                              {
-                                id: 7,
-                                src: "/assets/cars/gallery/95.jpg",
-                                title: "Championship Poster",
-                                caption: "Official event promotional material",
-                                },
-                                {
-                                  id: 7,
-                                  src: "/assets/cars/gallery/96.jpg",
-                                  title: "Championship Poster",
-                                  caption: "Official event promotional material",
-                                  },
-                                  {
-                                    id: 7,
-                                    src: "/assets/cars/gallery/97.jpg",
-                                    title: "Championship Poster",
-                                    caption: "Official event promotional material",
-                                    },
-                                    {
-                                      id: 7,
-                                      src: "/assets/cars/gallery/98.jpg",
-                                      title: "Championship Poster",
-                                      caption: "Official event promotional material",
-                                      },
-                                      {
-                                        id: 7,
-                                        src: "/assets/cars/gallery/99.jpg",
-                                        title: "Championship Poster",
-                                        caption: "Official event promotional material",
-                                        },
-                                        {
-                                          id: 7,
-                                          src: "/assets/cars/gallery/100.jpg",
-                                          title: "Championship Poster",
-                                          caption: "Official event promotional material",
-                                          },
-        ...this.generatePlaceholderPhotos(1)
-      ]
+                title: "Racing Competition",
+                caption: "Competitive racing moments"
+            },
+            {
+                id: 8,
+                src: "/assets/cars/gallery/108.jpg",
+                title: "Track Action",
+                caption: "Exciting track moments"
+            },
+            {
+                id: 9,
+                src: "/assets/cars/gallery/109.jpg",
+                title: "Championship Racing",
+                caption: "Championship-level competition"
+            },
+            {
+                id: 10,
+                src: "/assets/cars/gallery/110.jpg",
+                title: "Autocross Action",
+                caption: "Dynamic autocross racing"
+            },
+            {
+                id: 11,
+                src: "/assets/cars/gallery/111.jpg",
+                title: "Final Championship",
+                caption: "Championship finale moments"
+            },
+            {
+                id: 12,
+                src: "/assets/cars/gallery/92.jpg",
+                title: "Racing Action",
+                caption: "High-performance racing"
+            },
+            {
+                id: 13,
+                src: "/assets/cars/gallery/93.jpg",
+                title: "Track Competition",
+                caption: "Competitive track racing"
+            },
+            {
+                id: 14,
+                src: "/assets/cars/gallery/94.jpg",
+                title: "Speed Racing",
+                caption: "High-speed competition"
+            },
+            {
+                id: 15,
+                src: "/assets/cars/gallery/95.jpg",
+                title: "Championship Racing",
+                caption: "Championship-level action"
+            },
+            {
+                id: 16,
+                src: "/assets/cars/gallery/96.jpg",
+                title: "Autocross Competition",
+                caption: "Autocross racing competition"
+            },
+            {
+                id: 17,
+                src: "/assets/cars/gallery/97.jpg",
+                title: "Track Action",
+                caption: "Exciting track moments"
+            },
+            {
+                id: 18,
+                src: "/assets/cars/gallery/98.jpg",
+                title: "Racing Championship",
+                caption: "Championship racing action"
+            },
+            {
+                id: 19,
+                src: "/assets/cars/gallery/99.jpg",
+                title: "Final Competition",
+                caption: "Final competition moments"
+            }
+        ]
     }
-  
-    generatePlaceholderPhotos(count) {
-      const placeholderPhotos = []
-      const categories = ["Action", "Cars", "Awards", "Behind Scenes", "Track", "Drivers"]
-      const carImages = [
-        "/assets/cars/evo5.jpg",
-        "/assets/cars/mx5.jpg", 
-        "/assets/cars/wrx.jpg",
-        "/assets/cars/hatch.jpg",
-        "/assets/cars/crv.jpg",
-        "/assets/cars/civic.jpg",
-        "/assets/cars/86.jpg",
-        "/assets/cars/japan.jpg",
-        "/assets/cars/mazda.jpg"
-      ]
-  
-      for (let i = 0; i < count; i++) {
-        const category = categories[Math.floor(Math.random() * categories.length)]
-        const randomCarImage = carImages[Math.floor(Math.random() * carImages.length)]
-        placeholderPhotos.push({
-          id: i + 7,
-          src: randomCarImage,
-          title: `${category} Photo ${i + 1}`,
-          caption: `Professional ${category.toLowerCase()} photography from the Spring Championship event`,
-        })
-      }
-  
-      return placeholderPhotos
-    }
-  
+
     renderPhotos() {
-      const photoGrid = document.getElementById("photoGrid")
-      if (!photoGrid) return
-  
-      const photosToShow = this.photos.slice(0, this.currentPage * this.photosPerPage)
-  
-      // Clear existing photos if this is the first page
-      if (this.currentPage === 1) {
-        photoGrid.innerHTML = ""
-      }
-  
-      // Add new photos efficiently using DocumentFragment
-      const startIndex = (this.currentPage - 1) * this.photosPerPage
-      const newPhotos = photosToShow.slice(startIndex)
-      
-      const fragment = document.createDocumentFragment()
-      
-      newPhotos.forEach((photo, index) => {
-        const photoElement = this.createPhotoElement(photo, startIndex + index)
-        fragment.appendChild(photoElement)
-      })
-      
-      photoGrid.appendChild(fragment)
-      this.updateLoadMoreButton()
-      this.preloadNextPage() // Preload next page after rendering
-    }
-  
-    createPhotoElement(photo, index) {
-      const photoItem = document.createElement("div")
-      photoItem.className = "photo-item loading"
-      photoItem.dataset.index = index
-  
-      const img = document.createElement("img")
-      img.src = photo.src
-      img.alt = photo.title
-      img.loading = "lazy"
-      img.decoding = "async"
-  
-      // Handle image load
-      img.onload = () => {
-        photoItem.classList.remove("loading")
-        img.classList.add("loaded")
-        this.imageCache.add(photo.src) // Cache the loaded image
-      }
-  
-      // Handle image error
-      img.onerror = () => {
-        photoItem.classList.remove("loading")
-        img.src = "/assets/cars/evo5.jpg" // Fallback to a known working image
-        img.classList.add("loaded")
-      }
-  
-      // Add click event for lightbox using event delegation
-      photoItem.addEventListener("click", () => {
-        this.openLightbox(index)
-      })
-  
-      photoItem.appendChild(img)
-      return photoItem
-    }
-  
-    bindEvents() {
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-      const navMenu = document.querySelector(".nav-menu")
-  
-      if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener("click", () => {
-          navMenu.classList.toggle("active")
-        })
-      }
-  
-      // Load more button
-      const loadMoreBtn = document.getElementById("loadMoreBtn")
-      if (loadMoreBtn) {
-        loadMoreBtn.addEventListener("click", () => {
-          this.loadMorePhotos()
-        })
-      }
-  
-      // Lightbox events
-      this.bindLightboxEvents()
-  
-      // Keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        this.handleKeyboardNavigation(e)
-      })
-    }
-  
-    loadMorePhotos() {
-      if (this.isLoading) return
-  
-      const totalPhotos = this.photos.length
-      const photosShown = this.currentPage * this.photosPerPage
-  
-      if (photosShown >= totalPhotos) return
-  
-      this.isLoading = true
-      const loadMoreBtn = document.getElementById("loadMoreBtn")
-  
-      if (loadMoreBtn) {
-        loadMoreBtn.textContent = "Loading..."
-        loadMoreBtn.disabled = true
-      }
-  
-      // Use requestAnimationFrame for better performance
-      requestAnimationFrame(() => {
-        this.currentPage++
-        this.renderPhotos()
-        this.isLoading = false
-  
-        if (loadMoreBtn) {
-          loadMoreBtn.textContent = "Load More Photos"
-          loadMoreBtn.disabled = false
+        const galleryGrid = document.getElementById("galleryGrid")
+        if (!galleryGrid) return
+
+        const startIndex = (this.currentPage - 1) * this.photosPerPage
+        const endIndex = Math.min(startIndex + this.photosPerPage, this.photos.length)
+        const photosToShow = this.photos.slice(startIndex, endIndex)
+
+        // Clear grid if first page
+        if (this.currentPage === 1) {
+            galleryGrid.innerHTML = ""
         }
-      })
+
+        // Create and append photo elements
+        photosToShow.forEach((photo, index) => {
+            const photoElement = this.createPhotoElement(photo, startIndex + index)
+            galleryGrid.appendChild(photoElement)
+        })
+
+        this.updateLoadMoreButton()
     }
-  
-    updateLoadMoreButton() {
-      const loadMoreBtn = document.getElementById("loadMoreBtn")
-      const loadMoreSection = document.querySelector(".load-more-section")
-  
-      if (loadMoreBtn && loadMoreSection) {
+
+    createPhotoElement(photo, index) {
+        const galleryItem = document.createElement("div")
+        galleryItem.className = "gallery-item"
+        galleryItem.dataset.index = index
+
+        const img = document.createElement("img")
+        img.src = photo.src
+        img.alt = photo.title
+        img.loading = "lazy"
+
+        // Handle image error
+        img.onerror = () => {
+            img.src = "/assets/cars/evo5.jpg" // Fallback image
+        }
+
+        // Click to open lightbox
+        galleryItem.addEventListener("click", () => {
+            this.openLightbox(index)
+        })
+
+        galleryItem.appendChild(img)
+        return galleryItem
+    }
+
+    bindEvents() {
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+        const navMenu = document.querySelector(".nav-menu")
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener("click", () => {
+                navMenu.classList.toggle("active")
+            })
+        }
+
+        // Load more button
+        const loadMoreBtn = document.getElementById("loadMoreBtn")
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener("click", () => {
+                this.loadMorePhotos()
+            })
+        }
+
+        // Lightbox events
+        this.bindLightboxEvents()
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (e) => {
+            this.handleKeyboardNavigation(e)
+        })
+    }
+
+    loadMorePhotos() {
+        if (this.isLoading) return
+
         const totalPhotos = this.photos.length
         const photosShown = this.currentPage * this.photosPerPage
-  
-        if (photosShown >= totalPhotos) {
-          loadMoreSection.style.display = "none"
-        } else {
-          loadMoreSection.style.display = "block"
+
+        if (photosShown >= totalPhotos) return
+
+        this.isLoading = true
+        const loadMoreBtn = document.getElementById("loadMoreBtn")
+
+        if (loadMoreBtn) {
+            loadMoreBtn.textContent = "Loading..."
+            loadMoreBtn.disabled = true
         }
-      }
+
+        // Simulate loading delay for better UX
+        setTimeout(() => {
+            this.currentPage++
+            this.renderPhotos()
+            this.isLoading = false
+
+            if (loadMoreBtn) {
+                loadMoreBtn.textContent = "LOAD MORE PHOTOS"
+                loadMoreBtn.disabled = false
+            }
+        }, 300)
     }
-  
-    preloadNextPage() {
-      const nextPageStart = this.currentPage * this.photosPerPage
-      const nextPageEnd = Math.min(nextPageStart + this.photosPerPage, this.photos.length)
-      
-      for (let i = nextPageStart; i < nextPageEnd; i++) {
-        const photo = this.photos[i]
-        if (photo && !this.imageCache.has(photo.src)) {
-          const img = new Image()
-          img.src = photo.src
-          img.onload = () => {
-            this.imageCache.add(photo.src)
-          }
+
+    updateLoadMoreButton() {
+        const loadMoreBtn = document.getElementById("loadMoreBtn")
+        const loadMoreSection = document.querySelector(".load-more-section")
+
+        if (loadMoreBtn && loadMoreSection) {
+            const totalPhotos = this.photos.length
+            const photosShown = this.currentPage * this.photosPerPage
+
+            if (photosShown >= totalPhotos) {
+                loadMoreSection.style.display = "none"
+            } else {
+                loadMoreSection.style.display = "block"
+            }
         }
-      }
     }
-  
+
     // Lightbox functionality
     bindLightboxEvents() {
-      const lightbox = document.getElementById("lightbox")
-      const lightboxClose = document.getElementById("lightboxClose")
-      const lightboxPrev = document.getElementById("lightboxPrev")
-      const lightboxNext = document.getElementById("lightboxNext")
-  
-      if (lightboxClose) {
-        lightboxClose.addEventListener("click", (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          this.closeLightbox()
-        })
-      }
-  
-      if (lightbox) {
-        lightbox.addEventListener("click", (e) => {
-          if (e.target === lightbox) {
-            e.preventDefault()
-            e.stopPropagation()
-            this.closeLightbox()
-          }
-        })
-      }
-  
-      if (lightboxPrev) {
-        lightboxPrev.addEventListener("click", (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          this.navigateLightbox(-1)
-        })
-      }
-  
-      if (lightboxNext) {
-        lightboxNext.addEventListener("click", (e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          this.navigateLightbox(1)
-        })
-      }
-    }
-  
-    openLightbox(index) {
-      this.currentPhotoIndex = index
-      const photo = this.photos[index]
-      const lightbox = document.getElementById("lightbox")
-      const lightboxImage = document.getElementById("lightboxImage")
-      const lightboxCaption = document.getElementById("lightboxCaption")
-  
-      if (lightbox && lightboxImage && photo) {
-        lightboxImage.src = photo.src
-        lightboxImage.alt = photo.title
-  
-        if (lightboxCaption) {
-          lightboxCaption.textContent = photo.caption || photo.title
+        const lightbox = document.getElementById("lightbox")
+        const lightboxClose = document.getElementById("lightboxClose")
+        const lightboxPrev = document.getElementById("lightboxPrev")
+        const lightboxNext = document.getElementById("lightboxNext")
+
+        if (lightboxClose) {
+            lightboxClose.addEventListener("click", () => {
+                this.closeLightbox()
+            })
         }
-  
-        lightbox.classList.add("active")
-        document.body.style.overflow = "hidden"
-      }
+
+        if (lightbox) {
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox) {
+                    this.closeLightbox()
+                }
+            })
+        }
+
+        if (lightboxPrev) {
+            lightboxPrev.addEventListener("click", () => {
+                this.navigateLightbox(-1)
+            })
+        }
+
+        if (lightboxNext) {
+            lightboxNext.addEventListener("click", () => {
+                this.navigateLightbox(1)
+            })
+        }
     }
-  
+
+    openLightbox(index) {
+        this.currentPhotoIndex = index
+        const photo = this.photos[index]
+        const lightbox = document.getElementById("lightbox")
+        const lightboxImage = document.getElementById("lightboxImage")
+        const lightboxCaption = document.getElementById("lightboxCaption")
+
+        if (lightbox && lightboxImage && photo) {
+            lightboxImage.src = photo.src
+            lightboxImage.alt = photo.title
+
+            if (lightboxCaption) {
+                lightboxCaption.textContent = photo.caption || photo.title
+            }
+
+            lightbox.classList.add("active")
+            document.body.style.overflow = "hidden"
+        }
+    }
+
     closeLightbox() {
-      const lightbox = document.getElementById("lightbox")
-      if (lightbox) {
-        lightbox.classList.remove("active")
-        document.body.style.overflow = "auto"
-      }
+        const lightbox = document.getElementById("lightbox")
+        if (lightbox) {
+            lightbox.classList.remove("active")
+            document.body.style.overflow = "auto"
+        }
     }
-  
+
     navigateLightbox(direction) {
-      const lightbox = document.getElementById("lightbox")
-      if (!lightbox || !lightbox.classList.contains("active")) return
-      
-      const newIndex = this.currentPhotoIndex + direction
-  
-      if (newIndex >= 0 && newIndex < this.photos.length) {
-        this.openLightbox(newIndex)
-      }
+        const newIndex = this.currentPhotoIndex + direction
+
+        if (newIndex >= 0 && newIndex < this.photos.length) {
+            this.openLightbox(newIndex)
+        }
     }
-  
+
     handleKeyboardNavigation(e) {
-      const lightbox = document.getElementById("lightbox")
-      if (!lightbox || !lightbox.classList.contains("active")) return
-  
-      switch (e.key) {
-        case "Escape":
-          e.preventDefault()
-          e.stopPropagation()
-          this.closeLightbox()
-          break
-        case "ArrowLeft":
-          e.preventDefault()
-          e.stopPropagation()
-          this.navigateLightbox(-1)
-          break
-        case "ArrowRight":
-          e.preventDefault()
-          e.stopPropagation()
-          this.navigateLightbox(1)
-          break
-      }
+        const lightbox = document.getElementById("lightbox")
+        if (!lightbox || !lightbox.classList.contains("active")) return
+
+        switch (e.key) {
+            case "Escape":
+                this.closeLightbox()
+                break
+            case "ArrowLeft":
+                this.navigateLightbox(-1)
+                break
+            case "ArrowRight":
+                this.navigateLightbox(1)
+                break
+        }
     }
-  }
-  
-  // Initialize gallery when DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
+}
+
+// Initialize gallery when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
     new SimpleGallery()
-  })
-  
-  // Handle window resize for responsive behavior
-  window.addEventListener("resize", () => {
+})
+
+// Handle window resize
+window.addEventListener("resize", () => {
     const navMenu = document.querySelector(".nav-menu")
     if (window.innerWidth > 768 && navMenu) {
-      navMenu.classList.remove("active")
+        navMenu.classList.remove("active")
     }
-  })
+})
   

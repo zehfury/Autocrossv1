@@ -95,6 +95,422 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Event Details Modal Functionality
+const eventDetailsModal = document.getElementById('eventDetailsModal');
+const eventDetailsClose = document.getElementById('eventDetailsClose');
+
+// Event data for each event
+const eventData = {
+    'racing-dummies': {
+        title: 'RACING FOR DUMMIES',
+        image: '/assets/events/poster.jpg',
+        description: 'Perfect for beginners! This event is designed to introduce newcomers to the exciting world of autocross racing. Learn the basics of car control, racing techniques, and safety protocols in a supportive environment.',
+        date: 'August 30-31, 2025',
+        location: 'Negros Occidental Racing Circuit',
+        status: 'Registration Open',
+        rules: `
+            <h3>Event Rules & Regulations</h3>
+            <h4>Vehicle Requirements</h4>
+            <ul>
+                <li>All vehicles must pass safety inspection</li>
+                <li>Helmets are mandatory for all drivers</li>
+                <li>Vehicles must be street legal and insured</li>
+                <li>No modifications that compromise safety</li>
+            </ul>
+            
+            <h4>Driver Requirements</h4>
+            <ul>
+                <li>Valid driver's license required</li>
+                <li>Minimum age: 18 years old</li>
+                <li>No racing experience necessary</li>
+                <li>Safety briefing attendance mandatory</li>
+            </ul>
+            
+            <h4>Course Rules</h4>
+            <ul>
+                <li>Follow course markers and instructions</li>
+                <li>No aggressive driving or dangerous maneuvers</li>
+                <li>Respect speed limits in designated areas</li>
+                <li>Immediate disqualification for unsafe behavior</li>
+            </ul>
+        `,
+        registration: `
+            <h3>Registration Information</h3>
+            <h4>Entry Fee</h4>
+            <p>₱2,500 per driver (includes lunch and event t-shirt)</p>
+            
+            <h4>Registration Process</h4>
+            <ul>
+                <li>Complete online registration form</li>
+                <li>Submit required documents (license, insurance)</li>
+                <li>Pay registration fee</li>
+                <li>Receive confirmation email with event details</li>
+            </ul>
+            
+            <h4>Required Documents</h4>
+            <ul>
+                <li>Valid driver's license</li>
+                <li>Vehicle registration and insurance</li>
+                <li>Completed waiver form</li>
+                <li>Emergency contact information</li>
+            </ul>
+            
+            <h4>Registration Deadline</h4>
+            <p>March 10, 2025 - Limited to 50 participants</p>
+        `,
+        schedule: `
+            <h3>Event Schedule</h3>
+            <h4>Morning Session (8:00 AM - 12:00 PM)</h4>
+            <ul>
+                <li>8:00 AM - Registration and check-in</li>
+                <li>8:30 AM - Safety briefing and course walk</li>
+                <li>9:00 AM - Practice runs (3 runs per driver)</li>
+                <li>10:30 AM - Coffee break</li>
+                <li>11:00 AM - Timed runs begin</li>
+            </ul>
+            
+            <h4>Afternoon Session (1:00 PM - 5:00 PM)</h4>
+            <ul>
+                <li>1:00 PM - Lunch break</li>
+                <li>2:00 PM - Competition runs continue</li>
+                <li>3:30 PM - Final runs</li>
+                <li>4:30 PM - Awards ceremony</li>
+                <li>5:00 PM - Event concludes</li>
+            </ul>
+        `
+    },
+    'daddies-day': {
+        title: 'DADDIES DAY OUT AUTOCROSS',
+        image: '/assets/events/daddies.jpg',
+        description: 'A special event celebrating fathers and their passion for cars! Bring your family and enjoy a day of friendly competition, car shows, and family activities. Perfect for bonding over shared automotive enthusiasm.',
+        date: 'June 14-15, 2025',
+        location: 'Negros Occidental Racing Circuit',
+        status: 'Registration Closed',
+        rules: `
+            <h3>Event Rules & Regulations</h3>
+            <h4>Family-Friendly Event</h4>
+            <ul>
+                <li>Open to all skill levels</li>
+                <li>Family spectators welcome</li>
+                <li>Kid-friendly activities available</li>
+                <li>Safe viewing areas for families</li>
+            </ul>
+            
+            <h4>Vehicle Categories</h4>
+            <ul>
+                <li>Stock Class - No modifications</li>
+                <li>Modified Class - Light modifications allowed</li>
+                <li>Vintage Class - Classic cars (pre-1990)</li>
+                <li>Family Class - Multi-generational teams</li>
+            </ul>
+            
+            <h4>Safety Requirements</h4>
+            <ul>
+                <li>All standard safety rules apply</li>
+                <li>Family members must stay in designated areas</li>
+                <li>Children under 12 must be supervised at all times</li>
+                <li>No pets allowed on the track</li>
+            </ul>
+        `,
+        registration: `
+            <h3>Registration Information</h3>
+            <h4>Entry Fees</h4>
+            <ul>
+                <li>Single Driver: ₱3,000</li>
+                <li>Father-Son Team: ₱4,500</li>
+                <li>Family Package (4 people): ₱6,000</li>
+            </ul>
+            
+            <h4>What's Included</h4>
+            <ul>
+                <li>Event participation</li>
+                <li>Family lunch buffet</li>
+                <li>Event t-shirts for all participants</li>
+                <li>Family photo session</li>
+                <li>Kids' activities and games</li>
+            </ul>
+            
+            <h4>Registration Deadline</h4>
+            <p>June 15, 2025 - Limited to 75 participants</p>
+        `,
+        schedule: `
+            <h3>Event Schedule</h3>
+            <h4>Morning Activities (8:00 AM - 12:00 PM)</h4>
+            <ul>
+                <li>8:00 AM - Family check-in and registration</li>
+                <li>8:30 AM - Welcome ceremony</li>
+                <li>9:00 AM - Car show and display</li>
+                <li>10:00 AM - Racing sessions begin</li>
+                <li>11:00 AM - Kids' activities start</li>
+            </ul>
+            
+            <h4>Afternoon Activities (1:00 PM - 6:00 PM)</h4>
+            <ul>
+                <li>1:00 PM - Family lunch</li>
+                <li>2:00 PM - Racing continues</li>
+                <li>3:00 PM - Family photo session</li>
+                <li>4:30 PM - Awards ceremony</li>
+                <li>5:00 PM - Family dinner and social</li>
+            </ul>
+        `
+    },
+    'gymkhana-championship': {
+        title: 'GYMKHANA CHAMPIONSHIP',
+        image: '/assets/events/championship.jpg',
+        description: 'The premier autocross championship event! Compete against the best drivers in the region for the ultimate title. This high-stakes competition features challenging courses, professional timing, and prestigious awards.',
+        date: 'November 22-23, 2024',
+        location: 'Negros Occidental Racing Circuit',
+        status: 'Registration Closed',
+        rules: `
+            <h3>Championship Rules & Regulations</h3>
+            <h4>Competition Classes</h4>
+            <ul>
+                <li>Pro Class - Professional drivers</li>
+                <li>Amateur Class - Experienced amateurs</li>
+                <li>Novice Class - First-time competitors</li>
+                <li>Team Class - 2-3 driver teams</li>
+            </ul>
+            
+            <h4>Technical Regulations</h4>
+            <ul>
+                <li>Strict vehicle inspection required</li>
+                <li>Safety equipment must meet FIA standards</li>
+                <li>No performance-enhancing modifications</li>
+                <li>All vehicles must pass noise regulations</li>
+            </ul>
+            
+            <h4>Competition Format</h4>
+            <ul>
+                <li>Qualifying rounds determine starting order</li>
+                <li>Elimination bracket for final rounds</li>
+                <li>Best time of three runs counts</li>
+                <li>Penalties for course violations</li>
+            </ul>
+        `,
+        registration: `
+            <h3>Championship Registration</h3>
+            <h4>Entry Fees</h4>
+            <ul>
+                <li>Pro Class: ₱5,000</li>
+                <li>Amateur Class: ₱4,000</li>
+                <li>Novice Class: ₱3,500</li>
+                <li>Team Entry: ₱8,000</li>
+            </ul>
+            
+            <h4>Championship Prizes</h4>
+            <ul>
+                <li>1st Place: ₱50,000 + Trophy</li>
+                <li>2nd Place: ₱25,000 + Trophy</li>
+                <li>3rd Place: ₱15,000 + Trophy</li>
+                <li>Class Winners: ₱10,000 each</li>
+            </ul>
+            
+            <h4>Registration Requirements</h4>
+            <ul>
+                <li>Previous racing experience required</li>
+                <li>Vehicle must pass technical inspection</li>
+                <li>Complete safety equipment mandatory</li>
+                <li>Registration deadline: September 20, 2025</li>
+            </ul>
+        `,
+        schedule: `
+            <h3>Championship Schedule</h3>
+            <h4>Day 1 - Qualifying (September 27)</h4>
+            <ul>
+                <li>8:00 AM - Driver check-in and inspection</li>
+                <li>9:00 AM - Practice sessions</li>
+                <li>11:00 AM - Qualifying rounds begin</li>
+                <li>2:00 PM - Lunch break</li>
+                <li>3:00 PM - Qualifying continues</li>
+                <li>6:00 PM - Qualifying results announced</li>
+            </ul>
+            
+            <h4>Day 2 - Finals (September 28)</h4>
+            <ul>
+                <li>8:00 AM - Finalist check-in</li>
+                <li>9:00 AM - Elimination rounds</li>
+                <li>12:00 PM - Lunch break</li>
+                <li>1:00 PM - Semi-finals</li>
+                <li>3:00 PM - Championship finals</li>
+                <li>5:00 PM - Awards ceremony</li>
+            </ul>
+        `
+    },
+    'special-module': {
+        title: 'SPECIAL MODULE',
+        image: '/assets/events/specialmodule.jpg',
+        description: 'An exclusive training module designed for advanced drivers looking to perfect their skills. This intensive program includes professional instruction, advanced techniques, and personalized coaching.',
+        date: 'July 6-7, 2024',
+        location: 'Negros Occidental Racing Circuit',
+        status: 'Registration Closed',
+        rules: `
+            <h3>Special Module Rules</h3>
+            <h4>Participant Requirements</h4>
+            <ul>
+                <li>Minimum 2 years racing experience</li>
+                <li>Valid racing license or equivalent</li>
+                <li>Advanced driving skills assessment</li>
+                <li>Medical clearance required</li>
+            </ul>
+            
+            <h4>Training Modules</h4>
+            <ul>
+                <li>Advanced car control techniques</li>
+                <li>Professional racing strategies</li>
+                <li>Mental preparation and focus</li>
+                <li>Physical conditioning for racing</li>
+            </ul>
+            
+            <h4>Safety Protocols</h4>
+            <ul>
+                <li>Enhanced safety equipment required</li>
+                <li>Professional medical staff on-site</li>
+                <li>Emergency response procedures</li>
+                <li>Weather contingency plans</li>
+            </ul>
+        `,
+        registration: `
+            <h3>Special Module Registration</h3>
+            <h4>Program Fee</h4>
+            <p>₱15,000 per participant (includes all materials and equipment)</p>
+            
+            <h4>What's Included</h4>
+            <ul>
+                <li>Professional instruction</li>
+                <li>Personalized coaching sessions</li>
+                <li>Advanced training materials</li>
+                <li>Certificate of completion</li>
+                <li>Lunch and refreshments</li>
+            </ul>
+            
+            <h4>Registration Process</h4>
+            <ul>
+                <li>Submit application with racing resume</li>
+                <li>Skills assessment interview</li>
+                <li>Medical clearance submission</li>
+                <li>Payment confirmation</li>
+            </ul>
+            
+            <h4>Limited Availability</h4>
+            <p>Maximum 20 participants - Registration deadline: November 1, 2025</p>
+        `,
+        schedule: `
+            <h3>Special Module Schedule</h3>
+            <h4>Morning Session (8:00 AM - 12:00 PM)</h4>
+            <ul>
+                <li>8:00 AM - Registration and orientation</li>
+                <li>8:30 AM - Classroom instruction</li>
+                <li>9:30 AM - Track walk and course analysis</li>
+                <li>10:30 AM - Practical exercises</li>
+                <li>11:30 AM - Individual coaching sessions</li>
+            </ul>
+            
+            <h4>Afternoon Session (1:00 PM - 6:00 PM)</h4>
+            <ul>
+                <li>1:00 PM - Advanced techniques workshop</li>
+                <li>2:30 PM - Practice sessions</li>
+                <li>4:00 PM - Performance analysis</li>
+                <li>5:00 PM - Q&A and feedback</li>
+                <li>6:00 PM - Certificate presentation</li>
+            </ul>
+        `
+    }
+};
+
+// Event card click handlers
+document.querySelectorAll('.event-card.clickable').forEach(card => {
+    card.addEventListener('click', function() {
+        const eventId = this.getAttribute('data-event');
+        const event = eventData[eventId];
+        
+        if (event) {
+            openEventDetails(event);
+        }
+    });
+});
+
+// Open event details modal
+function openEventDetails(event) {
+    // Populate modal content
+    document.getElementById('eventDetailsImage').src = event.image;
+    document.getElementById('eventDetailsTitle').textContent = event.title;
+    document.getElementById('eventDetailsDescription').textContent = event.description;
+    document.getElementById('eventDetailsDate').innerHTML = `<i class="fas fa-calendar"></i> ${event.date}`;
+    document.getElementById('eventDetailsLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${event.location}`;
+    document.getElementById('eventDetailsStatus').innerHTML = `<i class="fas fa-clock"></i> ${event.status}`;
+    
+    // Populate tab content
+    document.getElementById('eventDetailsRules').innerHTML = event.rules;
+    document.getElementById('eventDetailsRegistration').innerHTML = event.registration;
+    document.getElementById('eventDetailsSchedule').innerHTML = event.schedule;
+    
+    // Update register button based on event status
+    const registerBtn = document.querySelector('.event-register-btn');
+    if (event.status === 'Registration Closed') {
+        registerBtn.textContent = 'REGISTRATION CLOSED';
+        registerBtn.style.opacity = '0.6';
+        registerBtn.style.cursor = 'not-allowed';
+        registerBtn.removeAttribute('href');
+    } else {
+        registerBtn.textContent = 'REGISTER NOW';
+        registerBtn.style.opacity = '1';
+        registerBtn.style.cursor = 'pointer';
+        registerBtn.href = 'register.html';
+    }
+    
+    // Show modal
+    eventDetailsModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close event details modal
+function closeEventDetails() {
+    eventDetailsModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Event details modal event listeners
+eventDetailsClose.addEventListener('click', closeEventDetails);
+
+// Close modal when clicking outside
+eventDetailsModal.addEventListener('click', function(e) {
+    if (e.target === eventDetailsModal) {
+        closeEventDetails();
+    }
+});
+
+// Tab functionality for event details
+document.querySelectorAll('.event-tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const tabName = this.getAttribute('data-event-tab');
+        
+        // Remove active class from all tabs and content
+        document.querySelectorAll('.event-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.event-tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        this.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    });
+});
+
+// Share event functionality
+document.querySelector('.event-share-btn').addEventListener('click', function() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Autocross Event',
+            text: 'Check out this exciting autocross event!',
+            url: window.location.href
+        });
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Event URL copied to clipboard!');
+        });
+    }
+});
+
 // Floating Register CTA functionality
 let lastScrollTop = 0;
 let scrollTimeout;
@@ -325,28 +741,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  new Swiper('.carousel-coverflow', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 1.7, // Show part of side slides
-    loop: true,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 60,      // Space between slides
-      depth: 200,       // More depth
-      modifier: 1.5,    // Stronger effect
-      slideShadows: false,
-      scale: 0.85,      // Side slides smaller
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: false,
-  });
-});
+
 
 // ===== GALLERY & MERCHANDISE LIGHTBOX FUNCTIONALITY =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -566,6 +961,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Collections Section Functionality
     initializeCollectionsSection();
+    
+    // Initialize Swiper Carousels
+    initializeSwiperCarousels();
 });
 
 // Drivers/Teams Section JavaScript
@@ -660,203 +1058,114 @@ function initializeCollectionsSection() {
     const collectionItems = document.querySelectorAll('.collection-item');
     console.log('Found collection items:', collectionItems.length);
     
+    // Keep both collections visible
     collectionItems.forEach((item, index) => {
         console.log(`Initializing collection item ${index}:`, item.getAttribute('data-collection'));
-        const dots = item.querySelectorAll('.dot');
-        const featuredProduct = item.querySelector('.featured-product img');
-        const bgProducts = item.querySelectorAll('.bg-product img');
-        
-        // Color variants data
-        const colorVariants = {
-            tshirts: {
-                yellow: '/assets/apparels/tshirt2-yellow.png',
-                green: '/assets/apparels/tshirt3-green.png',
-                black: '/assets/apparels/tshirt1-black.png'
-            },
-            polos: {
-                green: '/assets/apparels/polo1-green.png',
-                yellow: '/assets/apparels/polo2-yellow.png',
-                black: '/assets/apparels/polo3-black.png'
-            }
-        };
-        
-        const collection = item.getAttribute('data-collection');
-        
-        // Function to switch to a specific color
-        function switchToColor(color) {
-            // Remove active class from all dots
-            dots.forEach(d => d.classList.remove('active'));
-            
-            // Add active class to the dot with the selected color
-            const targetDot = Array.from(dots).find(d => d.getAttribute('data-color') === color);
-            if (targetDot) {
-                targetDot.classList.add('active');
-            }
-            
-            // Update featured product image
-            if (colorVariants[collection] && colorVariants[collection][color]) {
-                featuredProduct.src = colorVariants[collection][color];
-                featuredProduct.alt = `${color} ${collection}`;
-                
-                // Update background products
-                const otherColors = Object.keys(colorVariants[collection]).filter(c => c !== color);
-                bgProducts.forEach((bgImg, index) => {
-                    if (otherColors[index] && colorVariants[collection][otherColors[index]]) {
-                        bgImg.src = colorVariants[collection][otherColors[index]];
-                        bgImg.alt = `${otherColors[index]} ${collection}`;
-                    }
-                });
-            } else {
-                console.log('Color variant not found:', collection, color);
-            }
-        }
-
-        // Get available colors for this collection
-        const availableColors = Object.keys(colorVariants[collection] || {});
-        let currentColorIndex = 0;
-
-        // Find the current active color index
-        const activeDot = item.querySelector('.dot.active');
-        if (activeDot) {
-            const activeColor = activeDot.getAttribute('data-color');
-            currentColorIndex = availableColors.indexOf(activeColor);
-        }
-
-        // Add click event listeners to dots
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const color = dot.getAttribute('data-color');
-                currentColorIndex = availableColors.indexOf(color);
-                switchToColor(color);
-            });
-        });
-
-        // Add touch/swipe functionality
-        let startX = 0;
-        let startY = 0;
-        let isSwipeDetected = false;
-
-        const productShowcase = item.querySelector('.product-showcase');
-        
-        // Touch start
-        productShowcase.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isSwipeDetected = false;
-        }, { passive: true });
-
-        // Touch move
-        productShowcase.addEventListener('touchmove', (e) => {
-            if (!startX || !startY) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            
-            const diffX = startX - currentX;
-            const diffY = startY - currentY;
-            
-            // Check if horizontal swipe is more prominent than vertical
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
-                isSwipeDetected = true;
-                e.preventDefault(); // Prevent scrolling
-            }
-        }, { passive: false });
-
-        // Touch end
-        productShowcase.addEventListener('touchend', (e) => {
-            if (!startX || !startY || !isSwipeDetected) return;
-            
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            // Minimum swipe distance
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    // Swipe left - next color
-                    currentColorIndex = (currentColorIndex + 1) % availableColors.length;
-                } else {
-                    // Swipe right - previous color
-                    currentColorIndex = (currentColorIndex - 1 + availableColors.length) % availableColors.length;
-                }
-                
-                const newColor = availableColors[currentColorIndex];
-                switchToColor(newColor);
-            }
-            
-            // Reset
-            startX = 0;
-            startY = 0;
-            isSwipeDetected = false;
-        }, { passive: true });
-
-        // Mouse drag support for desktop
-        let isMouseDown = false;
-        let mouseStartX = 0;
-        let mouseDragDetected = false;
-
-        productShowcase.addEventListener('mousedown', (e) => {
-            isMouseDown = true;
-            mouseStartX = e.clientX;
-            mouseDragDetected = false;
-            productShowcase.style.cursor = 'grabbing';
-            e.preventDefault(); // Prevent text selection
-            console.log('Mouse down detected for swipe');
-        });
-
-        productShowcase.addEventListener('mousemove', (e) => {
-            if (!isMouseDown) return;
-            
-            const diffX = mouseStartX - e.clientX;
-            
-            if (Math.abs(diffX) > 20) {
-                mouseDragDetected = true;
-                e.preventDefault();
-                console.log('Drag detected, distance:', Math.abs(diffX));
-            }
-        });
-
-        productShowcase.addEventListener('mouseup', (e) => {
-            if (!isMouseDown || !mouseDragDetected) {
-                isMouseDown = false;
-                productShowcase.style.cursor = 'grab';
-                return;
-            }
-            
-            const endX = e.clientX;
-            const diffX = mouseStartX - endX;
-            
-            console.log('Mouse up - drag distance:', Math.abs(diffX));
-            
-            // Minimum drag distance
-            if (Math.abs(diffX) > 30) {
-                if (diffX > 0) {
-                    // Drag left - next color
-                    currentColorIndex = (currentColorIndex + 1) % availableColors.length;
-                    console.log('Switching to next color:', availableColors[currentColorIndex]);
-                } else {
-                    // Drag right - previous color
-                    currentColorIndex = (currentColorIndex - 1 + availableColors.length) % availableColors.length;
-                    console.log('Switching to previous color:', availableColors[currentColorIndex]);
-                }
-                
-                const newColor = availableColors[currentColorIndex];
-                switchToColor(newColor);
-            }
-            
-            isMouseDown = false;
-            mouseDragDetected = false;
-            productShowcase.style.cursor = 'grab';
-        });
-
-        productShowcase.addEventListener('mouseleave', () => {
-            isMouseDown = false;
-            mouseDragDetected = false;
-            productShowcase.style.cursor = 'grab';
-        });
-
-        // Set initial cursor
-        productShowcase.style.cursor = 'grab';
+        // Ensure both collections are visible
+        item.classList.add('active');
     });
+}
+
+// Swiper Carousel Initialization
+function initializeSwiperCarousels() {
+    // Destroy any existing Swiper instances first
+    if (window.tshirtsSwiper) {
+        window.tshirtsSwiper.destroy(true, true);
+    }
+    if (window.polosSwiper) {
+        window.polosSwiper.destroy(true, true);
+    }
+
+    // Initialize T-Shirts Carousel with unique identifier
+    window.tshirtsSwiper = new Swiper('.tshirts-carousel', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1.7,
+        loop: false, // Disable loop to prevent warnings and ensure proper separation
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 60,
+            depth: 200,
+            modifier: 1.5,
+            slideShadows: false,
+            scale: 0.85,
+        },
+        pagination: {
+            el: '.tshirts-carousel .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.tshirts-next',
+            prevEl: '.tshirts-prev',
+        },
+        on: {
+            init: function() {
+                console.log('T-shirts carousel initialized');
+            },
+            slideChange: function() {
+                console.log('T-shirts slide changed to:', this.realIndex);
+                // Verify this is actually the T-shirts carousel
+                const currentSlide = this.slides[this.activeIndex];
+                const slideTitle = currentSlide ? currentSlide.getAttribute('data-title') : 'unknown';
+                console.log('T-shirts current slide title:', slideTitle);
+            }
+        }
+    });
+
+    // Initialize Polo Shirts Carousel with unique identifier
+    window.polosSwiper = new Swiper('.polos-carousel', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1.7,
+        loop: false, // Disable loop to prevent warnings and ensure proper separation
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 60,
+            depth: 200,
+            modifier: 1.5,
+            slideShadows: false,
+            scale: 0.85,
+        },
+        pagination: {
+            el: '.polos-carousel .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.polos-next',
+            prevEl: '.polos-prev',
+        },
+        on: {
+            init: function() {
+                console.log('Polo shirts carousel initialized');
+            },
+            slideChange: function() {
+                console.log('Polo shirts slide changed to:', this.realIndex);
+                // Verify this is actually the Polo shirts carousel
+                const currentSlide = this.slides[this.activeIndex];
+                const slideTitle = currentSlide ? currentSlide.getAttribute('data-title') : 'unknown';
+                console.log('Polo shirts current slide title:', slideTitle);
+            }
+        }
+    });
+
+    console.log('Both carousels initialized successfully');
+    
+    // Test navigation buttons
+    setTimeout(() => {
+        const tshirtsNext = document.querySelector('.tshirts-next');
+        const tshirtsPrev = document.querySelector('.tshirts-prev');
+        const polosNext = document.querySelector('.polos-next');
+        const polosPrev = document.querySelector('.polos-prev');
+        
+        console.log('Navigation buttons found:', {
+            tshirtsNext: !!tshirtsNext,
+            tshirtsPrev: !!tshirtsPrev,
+            polosNext: !!polosNext,
+            polosPrev: !!polosPrev
+        });
+    }, 1000);
 }
 
 // Initialize view all modal when DOM is loaded
@@ -875,13 +1184,13 @@ function initializeViewAllModal() {
     
     // Data for drivers and teams
     const driversData = [
-        { img: '/assets/driver1.jpg', name: 'Oscar ', description: 'Professional Driver' },
-        { img: '/assets/driver2.jpg', name: 'Lando', description: 'Championship Winner' },
-        { img: '/assets/driver3.png', name: 'Max ', description: 'Rising Star' },
-        { img: '/assets/driver4.jpg', name: 'George ', description: 'Veteran Racer' },
-        { img: '/assets/driver5.jpg', name: 'Charles', description: 'Speed Demon' },
-        { img: '/assets/driver6.jpg', name: 'Lewis', description: 'Track Master' },
-        { img: '/assets/driver7.jpg', name: 'Kimi', description: 'Autocross Expert' }
+        { img: '/assets/drivers/driver1.jpg', name: 'Oscar ', description: 'Professional Driver' },
+        { img: '/assets/drivers/driver2.jpg', name: 'Lando', description: 'Championship Winner' },
+        { img: '/assets/drivers/driver3.png', name: 'Max ', description: 'Rising Star' },
+        { img: '/assets/drivers/driver4.jpg', name: 'George ', description: 'Veteran Racer' },
+        { img: '/assets/drivers/driver5.jpg', name: 'Charles', description: 'Speed Demon' },
+        { img: '/assets/drivers/driver6.jpg', name: 'Lewis', description: 'Track Master' },
+        { img: '/assets/drivers/driver7.jpg', name: 'Kimi', description: 'Autocross Expert' }
     ];
     
     const teamsData = [
@@ -997,4 +1306,49 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+});
+
+// T-Shirt Swiper
+document.addEventListener('DOMContentLoaded', function() {
+  new Swiper('.tshirt-swiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1.3,
+    loop: true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 60,
+      depth: 200,
+      modifier: 1.5,
+      slideShadows: false,
+      scale: 0.85,
+    },
+    pagination: {
+      el: '.tshirt-swiper .swiper-pagination',
+      clickable: true,
+    },
+    navigation: false,
+  });
+  // Polo Swiper
+  new Swiper('.polo-swiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1.3,
+    loop: true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 60,
+      depth: 200,
+      modifier: 1.5,
+      slideShadows: false,
+      scale: 0.85,
+    },
+    pagination: {
+      el: '.polo-swiper .swiper-pagination',
+      clickable: true,
+    },
+    navigation: false,
+  });
 });

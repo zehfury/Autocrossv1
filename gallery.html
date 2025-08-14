@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/logo.png" alt="ACN Logo">
+                <img src="assets/logo/logo.png" alt="ACN Logo">
                 <span>AUTOCROSS CLUB OF NEGROS</span>
             </a>
             <div class="nav-menu">
@@ -30,38 +30,35 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Back to Homepage Button -->
-            <a href="index.html" class="back-home-btn">
-                <i class="fas fa-arrow-left"></i>
-                Back to Homepage
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">PHOTO GALLERY</h1>
+            <p class="hero-description">Relive the excitement of our autocross events through stunning action shots and memorable moments captured on track.</p>
+            <a href="index.html" class="btn btn-secondary hero-learn">
+                <i class="fas fa-arrow-left"></i> BACK TO HOME
             </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photos will be loaded here by JavaScript -->
+            </div>
             
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>SAMPLE GALLERY</h1>
-                <p>Under Development</p>
-            </div>
-
-            <!-- Photo Grid -->
-            <div class="photo-grid" id="photoGrid">
-                <!-- Photos will be loaded here -->
-            </div>
-
-            <!-- Load More Button -->
             <div class="load-more-section">
-                <button class="load-more-btn" id="loadMoreBtn">Load More Photos</button>
+                <button class="btn btn-primary" id="loadMoreBtn">LOAD MORE PHOTOS</button>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <span class="lightbox-close" id="lightboxClose">&times;</span>
-            <img class="lightbox-image" id="lightboxImage" src="/placeholder.svg" alt="">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
             <div class="lightbox-caption" id="lightboxCaption"></div>
             <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
             <button class="lightbox-next" id="lightboxNext">&#10095;</button>
