@@ -4,17 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autocross Club of Negros - Where Speed Meets Precision</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
-    <!-- Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Join the Autocross Club of Negros for thrilling racing events, championship competitions, and automotive excellence. Experience precision driving and high-performance racing.">
+    <meta name="keywords" content="autocross, racing, negros, philippines, motorsport, championship, car racing, precision driving">
+    <link rel="canonical" href="https://autocross-negros.vercel.app/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Autocross Club of Negros - Where Speed Meets Precision">
+    <meta property="og:description" content="Join the Autocross Club of Negros for thrilling racing events, championship competitions, and automotive excellence.">
+    <meta property="og:image" content="https://autocross-negros.vercel.app/assets/logo/logo.webp">
+    <meta property="og:url" content="https://autocross-negros.vercel.app/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Autocross Club of Negros">
+    <meta name="twitter:description" content="Thrilling racing events and championship competitions">
+    <meta name="twitter:image" content="https://autocross-negros.vercel.app/assets/logo/logo.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.min.css" as="style">
+    <link rel="preload" href="assets/css/fontawesome-custom.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue:wght@400&display=swap" as="style">
+    <link rel="preload" href="assets/logo/logo.webp" as="image">
+    
+    <!-- Critical CSS - Inlined for fastest rendering -->
+    <style>
+    /* Critical CSS - Above the fold styles */
+    *{margin:0;padding:0;box-sizing:border-box}
+    .skip-link{position:absolute;top:-40px;left:6px;background:#01764f;color:#fff;padding:8px;text-decoration:none;border-radius:4px;z-index:10000;transition:top .3s}
+    .skip-link:focus{top:6px}
+    body,html{overflow-x:hidden;width:100%;max-width:100%;position:relative;background:#000!important;color:#f1f1f1!important}
+    :root{--primary-green:#01764F;--primary-orange:#F18A1F;--black:#fff;--white:#FFFFFF;--gray:#fff;--light-gray:#f5f5f5;--dark-gray:#fff}
+    body{font-family:Inter,sans-serif;line-height:1.6;color:var(--black);overflow-x:hidden;background:#000;color:#f1f1f1;width:100%;max-width:100vw;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;background:0 0;width:100%;overflow:hidden}
+    .top-banner{background:var(--dark-gray);color:var(--white);padding:12px 0;text-align:center;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px}
+    .navbar{background:rgba(0,0,0,.95);padding:20px 0;backdrop-filter:blur(15px);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+    .navbar-container{display:flex;justify-content:space-between;align-items:center;gap:40px;overflow:visible;position:relative}
+    .navbar-logo{display:flex;align-items:center;text-decoration:none;color:#fff;min-width:0;overflow:visible;font-weight:700;font-size:20px;flex-shrink:0;transition:all .3s ease}
+    .navbar-logo-img{height:45px;width:auto;margin-right:15px;object-fit:contain;max-width:100%;transition:transform .3s ease}
+    .navbar-logo-text{font-size:16px;line-height:1.1;white-space:nowrap;font-weight:700;display:flex;align-items:center;justify-content:center;height:100%;vertical-align:middle;transform:translateY(0);color:#fff}
+    .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:600px;width:100%;max-width:100vw;background:#000!important}
+    .hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;display:flex;gap:0;overflow:hidden}
+    .hero-image{position:relative;overflow:hidden;height:100vh;min-height:600px;flex:1}
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .3s ease;display:block}
+    .hero-content{position:relative;z-index:2;text-align:center;color:var(--white);max-width:800px;padding:0 20px}
+    .hero-logo{margin-bottom:40px;display:flex;justify-content:center;align-items:center;overflow:visible}
+    .hero-logo img{width:180px;height:auto;object-fit:contain;max-width:100%;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+    .hero-title{font-family:Inter,sans-serif;font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:30px;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:2px;text-shadow:0 4px 12px rgba(0,0,0,.5)}
+    .hero-description{font-size:1.1rem;font-weight:400;margin-bottom:50px;color:rgba(255,255,255,.9);text-align:center;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+    .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+    .hero-register{background:linear-gradient(135deg,#01764f,#249e6b)!important;color:#fff!important;border:none!important;padding:16px 40px!important;border-radius:8px!important;font-weight:700!important;font-size:16px!important;text-transform:uppercase!important;letter-spacing:1px!important;box-shadow:0 4px 16px rgba(1,118,79,.3)!important;transition:all .3s ease!important;text-decoration:none!important;display:inline-block}
+    .hero-learn{background:0 0!important;color:#fff!important;border:2px solid rgba(255,255,255,.5)!important;padding:14px 40px!important;border-radius:8px!important;font-weight:600!important;font-size:16px!important;text-transform:uppercase!important;letter-spacing:1px!important;transition:all .3s ease!important;text-decoration:none!important;display:inline-block}
+    .fade-in{opacity:0;transform:translateY(20px)}
+    @media (max-width:768px){
+      .hero-title{font-size:2.2rem;line-height:1.2;margin-bottom:20px;letter-spacing:1.5px}
+      .hero-logo img{width:140px}
+      .navbar{padding:18px 0}
+      .navbar-container{gap:20px;padding:0 20px;align-items:center;flex-wrap:nowrap;justify-content:space-between;height:70px;display:flex}
+    }
+    @media (max-width:480px){
+      .hero-title{font-size:1.8rem;line-height:1.3;letter-spacing:1px;margin-bottom:18px}
+      .hero-logo img{width:120px}
+    }
+    </style>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="assets/css/fontawesome-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/swiper.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/fontawesome-custom.css">
+        <link rel="stylesheet" href="styles.min.css">
+        <link rel="stylesheet" href="assets/css/swiper.min.css">
+    </noscript>
+    
+    <!-- Animation Libraries - Load asynchronously -->
+    <script src="assets/js/gsap.min.js" defer></script>
+    <script src="assets/js/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Configuration -->
+    <script src="config.js"></script>
+    
+    <!-- Google Maps API - Loaded dynamically -->
+    <script>
+        // Load Google Maps API dynamically with key from config or environment
+        function loadGoogleMapsAPI() {
+            // Check for environment variable first (Vercel), then config
+            const apiKey = window.GOOGLE_MAPS_API_KEY || (window.CONFIG && window.CONFIG.GOOGLE_MAPS_API_KEY);
+            
+            if (apiKey && apiKey !== 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+            } else {
+                console.error('Google Maps API key not found. Please add your API key to Vercel environment variables or config.js');
+            }
+        }
+        
+        // Load API when config is ready - use requestIdleCallback for better performance
+        if (window.requestIdleCallback) {
+            requestIdleCallback(() => loadGoogleMapsAPI());
+        } else {
+            setTimeout(loadGoogleMapsAPI, 1000);
+        }
+    </script>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Top Banner -->
     <div class="top-banner" id="topBanner">
         <div class="container">
@@ -29,7 +135,7 @@
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="#" class="navbar-logo">
-                <img src="assets/logo/logo.png" alt="ACN Logo" class="navbar-logo-img">
+                <img src="assets/logo/logo.webp" alt="ACN Logo" class="navbar-logo-img" width="45" height="45">
                 <span class="navbar-logo-text">ACN</span>
             </a>
             <div class="navbar-links" id="navLinks">
@@ -52,21 +158,22 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="hero-bg">
             <div class="hero-image hero-image-left">
-                <img src="/assets/hero/homepage1.jpg" alt="Autocross Car 1">
+                <img src="/assets/hero/homepage1.webp" alt="Autocross Car 1" width="400" height="600">
             </div>
             <div class="hero-image hero-image-center">
-                <img src="/assets/hero/homepage2.png" alt="Autocross Action">
+                <img src="/assets/hero/homepage2.webp" alt="Autocross Action" width="400" height="600">
             </div>
             <div class="hero-image hero-image-right">
-                <img src="/assets/hero/homepage3.jpg" alt="Autocross Car 2">
+                <img src="/assets/hero/homepage3.webp" alt="Autocross Car 2" width="400" height="600">
+            </div>
             </div>
         </div>
         <div class="hero-content">
             <div class="hero-logo fade-in">
-                <img src="assets/logo/logo.png" alt="ACN Logo">
+                <img src="assets/logo/logo.webp" alt="ACN Logo" width="180" height="180">
             </div>
             <h1 class="hero-title fade-in">AUTOCROSS CLUB OF NEGROS</h1>
             <p class="hero-description fade-in">Experience the thrill of precision driving in Negros Occidental's premier autocross community. Join us for adrenaline-pumping events, skill-building workshops, and unforgettable racing moments.</p>
@@ -84,7 +191,7 @@
             <div class="events-grid">
                 <div class="event-card slide-up clickable" data-event="racing-dummies">
                     <div class="event-image">
-                        <img src="/assets/events/poster.jpg" alt="Racing for Dummies">
+                        <img src="/assets/events/poster.webp" alt="Racing for Dummies" width="400" height="300" loading="lazy">
                     </div>
                     <div class="event-content">
                         <h3>RACING FOR DUMMIES</h3>
@@ -98,7 +205,7 @@
                 </div>
                 <div class="event-card slide-up clickable" data-event="daddies-day">
                     <div class="event-image">
-                        <img src="/assets/events/daddies.jpg" alt="Daddies Day Out">
+                        <img src="/assets/events/daddies.webp" alt="Daddies Day Out" width="400" height="300" loading="lazy">
                     </div>
                     <div class="event-content">
                         <h3>DADDIES DAY OUT AUTOCROSS</h3>
@@ -112,7 +219,7 @@
                 </div>
                 <div class="event-card slide-up clickable" data-event="gymkhana-championship">
                     <div class="event-image">
-                        <img src="/assets/events/championship.jpg" alt="Gymkhana Championship">
+                        <img src="/assets/events/championship.webp" alt="Gymkhana Championship" width="400" height="300" loading="lazy">
                     </div>
                     <div class="event-content">
                         <h3>GYMKHANA CHAMPIONSHIP</h3>
@@ -126,7 +233,7 @@
                 </div>
                 <div class="event-card slide-up clickable" data-event="special-module">
                     <div class="event-image">
-                        <img src="/assets/events/specialmodule.jpg" alt="AUTOCROSS Special Module">
+                        <img src="/assets/events/specialmodule.webp" alt="AUTOCROSS Special Module" width="400" height="300" loading="lazy">
                     </div>
                     <div class="event-content">
                         <h3>AUTOCROSS SPECIAL MODULE</h3>
@@ -145,34 +252,101 @@
         </div>
     </section>
 
+    <!-- Track Location Section -->
+    <section id="track-location" class="track-location-section">
+        <div class="container">
+            <h2 class="section-title slide-up">TRACK LOCATION</h2>
+            <div class="track-location-content">
+                <div class="track-info slide-up">
+                    <div class="track-details">
+                        <h3>Autocross Track - Negros Occidental</h3>
+                        <p>Experience the thrill of precision driving at our state-of-the-art autocross facility. Located in the heart of Negros Occidental, our track offers challenging courses designed for both beginners and experienced drivers.</p>
+                        
+                        <div class="track-features">
+                            <div class="feature-item">
+                                <i class="fas fa-route"></i>
+                                <span>Multiple Course Layouts</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Safety Equipment Available</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-car"></i>
+                                <span>Vehicle Inspection Area</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Spectator Viewing Areas</span>
+                            </div>
+                        </div>
+
+                        <div class="track-actions">
+                            <button class="btn btn-primary" id="getDirectionsBtn">
+                                <i class="fas fa-directions"></i> GET DIRECTIONS
+                            </button>
+                            <button class="btn btn-secondary" id="trackInfoBtn">
+                                <i class="fas fa-info-circle"></i> TRACK INFO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="track-map-container slide-up">
+                    <div id="trackMap" class="track-map"></div>
+                    <div class="map-overlay">
+                        <div class="map-controls">
+                            <button class="map-control-btn" id="satelliteBtn" title="Satellite View">
+                                <i class="fas fa-satellite"></i>
+                            </button>
+                            <button class="map-control-btn" id="streetBtn" title="Street View">
+                                <i class="fas fa-road"></i>
+                            </button>
+                            <button class="map-control-btn" id="fullscreenBtn" title="Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        <!-- Exit Fullscreen Button -->
+                        <div class="exit-fullscreen-btn" id="exitFullscreenBtn" style="display: none;">
+                            <button class="exit-btn" title="Exit Fullscreen">
+                                <i class="fas fa-times"></i>
+                                <span>Exit Fullscreen</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <div class="container">
             <h2 class="section-title slide-up">GALLERY</h2>
             <div class="gallery-grid">
-                <div class="gallery-item slide-up" data-index="0" data-image="/assets/cars/86.jpg" data-title="Toyota 86" data-description="Sample Description">
-                    <img src="/assets/cars/86.jpg" alt="Racing Action" loading="lazy">
+                <div class="gallery-item slide-up" data-index="0" data-image="/assets/cars/86.webp" data-title="Toyota 86" data-description="Sample Description">
+                    <img src="/assets/cars/86.webp" alt="Racing Action" width="400" height="300" loading="lazy">
                 </div>
-                <div class="gallery-item slide-up" data-index="1" data-image="/assets/cars/mx5.jpg" data-title="Mazda MX-5" data-description="Grey MX-5 showcasing precision driving">
-                    <img src="/assets/cars/mx5.jpg" alt="Autocross Racing" loading="lazy">
+                <div class="gallery-item slide-up" data-index="1" data-image="/assets/cars/mx5.webp" data-title="Mazda MX-5" data-description="Grey MX-5 showcasing precision driving">
+                    <img src="/assets/cars/mx5.webp" alt="Autocross Racing" width="400" height="300" loading="lazy">
                 </div>
-                <div class="gallery-item slide-up" data-index="2" data-image="/assets/cars/wrx.jpg" data-title="Subaru WRX STI" data-description="WRX STI in competition">
-                    <img src="/assets/cars/wrx.jpg" alt="Competition" loading="lazy">
+                <div class="gallery-item slide-up" data-index="2" data-image="/assets/cars/wrx.webp" data-title="Subaru WRX STI" data-description="WRX STI in competition">
+                    <img src="/assets/cars/wrx.webp" alt="Competition" width="400" height="300" loading="lazy">
                 </div>
-                <div class="gallery-item slide-up" data-index="3" data-image="/assets/cars/civic.jpg" data-title="Honda Civic " data-description="White Honda Civic in competition">
-                    <img src="/assets/cars/civic.jpg" alt="Racing Cars" loading="lazy">
+                <div class="gallery-item slide-up" data-index="3" data-image="/assets/cars/civic.webp" data-title="Honda Civic " data-description="White Honda Civic in competition">
+                    <img src="/assets/cars/civic.webp" alt="Racing Cars" width="400" height="300" loading="lazy">
                 </div>
-                <div class="gallery-item slide-up" data-index="4" data-image="/assets/cars/evo5.jpg" data-title="evo5" data-description="White Evo5 in competition">
-                    <img src="/assets/cars/evo5.jpg" alt="Track Events" loading="lazy">
+                <div class="gallery-item slide-up" data-index="4" data-image="/assets/cars/evo5.webp" data-title="evo5" data-description="White Evo5 in competition">
+                    <img src="/assets/cars/evo5.webp" alt="Track Events" width="400" height="300" loading="lazy">
                 </div>
-                <div class="gallery-item slide-up" data-index="5" data-image="/assets/cars/miata.jpg" data-title="Miata" data-description="White Miata">
-                    <img src="/assets/cars/miata.jpg" alt="Championship" loading="lazy">
+                <div class="gallery-item slide-up" data-index="5" data-image="/assets/cars/miata.webp" data-title="Miata" data-description="White Miata">
+                    <img src="/assets/cars/miata.webp" alt="Championship" width="400" height="300" loading="lazy">
                 </div>
             </div>
             
             <!-- View All Photos Button -->
             <div class="gallery-cta slide-up">
-                <a href="/gallery.html" class="btn btn-primary gallery-view-all">
+                <a href="/gallery-react.html" class="btn btn-primary gallery-view-all">
                     VIEW ALL
                 </a>
             </div>
@@ -192,7 +366,7 @@
                     <i class="fas fa-pause"></i>
                 </button>
             </div>
-            <video poster="/assets/videos/tokyo.jpg" preload="metadata">
+                            <video poster="/assets/videos/tokyo.webp" preload="metadata">
                 <source src="/assets/videos/tokyow.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -224,25 +398,25 @@
                 <div class="tab-content active" id="drivers">
                     <div class="drivers-carousel-track">
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver1.jpg" alt="Driver 1">
+                            <img src="/assets/drivers/driver1.webp" alt="Driver 1" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver2.jpg" alt="Driver 2">
+                            <img src="/assets/drivers/driver2.webp" alt="Driver 2" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver3.png" alt="Driver 3">
+                            <img src="/assets/drivers/driver3.webp" alt="Driver 3" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver4.jpg" alt="Driver 4">
+                            <img src="/assets/drivers/driver4.webp" alt="Driver 4" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver5.jpg" alt="Driver 5">
+                            <img src="/assets/drivers/driver5.webp" alt="Driver 5" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver6.jpg" alt="Driver 5">
+                            <img src="/assets/drivers/driver6.webp" alt="Driver 6" width="250" height="400" loading="lazy">
                         </div>
                         <div class="carousel-item">
-                            <img src="/assets/drivers/driver7.jpg" alt="Driver 5">
+                            <img src="/assets/drivers/driver7.webp" alt="Driver 7" width="250" height="400" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -250,25 +424,25 @@
                 <div class="tab-content" id="teams">
                     <div class="drivers-carousel-track">
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/mclaren.jpg" alt="Formula 1">
+                            <img src="/assets/teams/mclaren.webp" alt="Formula 1" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/mercedes.jpg" alt="Petronas">
+                            <img src="/assets/teams/mercedes.webp" alt="Petronas" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/ferrari.jpg" alt="Red Bull Racing">
+                            <img src="/assets/teams/ferrari.webp" alt="Red Bull Racing" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/redbull.jpg" alt="McLaren">
+                            <img src="/assets/teams/redbull.webp" alt="McLaren" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/kick.jpg" alt="Ferrari">
+                            <img src="/assets/teams/kick.webp" alt="Ferrari" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/aston.jpg" alt="Mercedes">
+                            <img src="/assets/teams/aston.webp" alt="Mercedes" width="250" height="300" loading="lazy">
                         </div>
                         <div class="carousel-item team-logo">
-                            <img src="/assets/teams/alpine.jpg" alt="Alpine">
+                            <img src="/assets/teams/alpine.webp" alt="Alpine" width="250" height="300" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -286,14 +460,23 @@
                 <div class="collection-item active" data-collection="tshirts">
                     <div class="swiper carousel-coverflow tshirts-carousel">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-image="/assets/apparels/tshirt2-yellow.png" data-title="Yellow T-Shirt" data-description="Official racing t-shirt in yellow">
-                                <img src="/assets/apparels/tshirt2-yellow.png" alt="Yellow T-Shirt"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/tshirt2-yellow.webp" data-title="Yellow T-Shirt" data-description="Official racing t-shirt in yellow">
+                                <picture>
+                                    <source srcset="/assets/apparels/tshirt2-yellow.webp" type="image/webp">
+                                    <img src="/assets/apparels/tshirt2-yellow.webp" alt="Yellow T-Shirt" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
-                            <div class="swiper-slide" data-image="/assets/apparels/tshirt3-green.png" data-title="Green T-Shirt" data-description="Official racing t-shirt in green">
-                                <img src="/assets/apparels/tshirt3-green.png" alt="Green T-Shirt"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/tshirt3-green.webp" data-title="Green T-Shirt" data-description="Official racing t-shirt in green">
+                                <picture>
+                                    <source srcset="/assets/apparels/tshirt3-green.webp" type="image/webp">
+                                    <img src="/assets/apparels/tshirt3-green.webp" alt="Green T-Shirt" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
-                            <div class="swiper-slide" data-image="/assets/apparels/tshirt1-black.png" data-title="Black T-Shirt" data-description="Official racing t-shirt in black">
-                                <img src="/assets/apparels/tshirt1-black.png" alt="Black T-Shirt"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/tshirt1-black.webp" data-title="Black T-Shirt" data-description="Official racing t-shirt in black">
+                                <picture>
+                                    <source srcset="/assets/apparels/tshirt1-black.webp" type="image/webp">
+                                    <img src="/assets/apparels/tshirt1-black.webp alt="Black T-Shirt" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
                             
                         </div>
@@ -307,14 +490,23 @@
                 <div class="collection-item active" data-collection="polos">
                     <div class="swiper carousel-coverflow polos-carousel">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-image="/assets/apparels/polo1-green.png" data-title="Green Polo" data-description="Official racing polo in green">
-                                <img src="/assets/apparels/polo1-green.png" alt="Green Polo"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/polo1-green.webp" data-title="Green Polo" data-description="Official racing polo in green">
+                                <picture>
+                                    <source srcset="/assets/apparels/polo1-green.webp" type="image/webp">
+                                    <img src="/assets/apparels/polo1-green.webp" alt="Green Polo" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
-                            <div class="swiper-slide" data-image="/assets/apparels/polo2-yellow.png" data-title="Yellow Polo" data-description="Official racing polo in yellow">
-                                <img src="/assets/apparels/polo2-yellow.png" alt="Yellow Polo"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/polo2-yellow.webp" data-title="Yellow Polo" data-description="Official racing polo in yellow">
+                                <picture>
+                                    <source srcset="/assets/apparels/polo2-yellow.webp" type="image/webp">
+                                    <img src="/assets/apparels/polo2-yellow.png" alt="Yellow Polo" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
-                            <div class="swiper-slide" data-image="/assets/apparels/polo3-black.png" data-title="Black Polo" data-description="Official racing polo in black">
-                                <img src="/assets/apparels/polo3-black.png" alt="Black Polo"/>
+                            <div class="swiper-slide" data-image="/assets/apparels/polo3-black.webp" data-title="Black Polo" data-description="Official racing polo in black">
+                                <picture>
+                                    <source srcset="/assets/apparels/polo3-black.webp" type="image/webp">
+                                    <img src="/assets/apparels/polo3-black.webp" alt="Black Polo" width="260" height="320" loading="lazy"/>
+                                </picture>
                             </div>
                         </div>
                         <div class="swiper-button-next polos-next"></div>
@@ -334,39 +526,39 @@
             
             <div class="partners-grid">
                 <div class="partner-item">
-                    <img src="/assets/partners/1.png" alt="Auto-Centric" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/1.webp" alt="Auto-Centric" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">AUTO-CENTRIC</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/2.png" alt="CN Negros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/2.webp" alt="CN Negros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">CN<br>NEGROS</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/3.png" alt="LRC Solar Industrial" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/3.webp" alt="LRC Solar Industrial" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">LRC<br>SOLAR<br>INDUSTRIAL</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/4.png" alt="Oil Seven" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/4.webp" alt="Oil Seven" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">OIL<br>SEVEN</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/5.png" alt="Skids" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/5.webp" alt="Skids" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">Skids</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/6.png" alt="Megaworld" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/6.webp" alt="Megaworld" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">MEGAWORLD</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/7.png" alt="Northill Gateway" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/7.webp" alt="Northill Gateway" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">NORTHILL<br>GATEWAY</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/8.png" alt="MotorSport Development Program" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/8.webp" alt="MotorSport Development Program" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">MotorSport<br>DEVELOPMENT PROGRAM</span>
                 </div>
                 <div class="partner-item">
-                    <img src="/assets/partners/9.png" alt="Tops 88 Car Wash" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="/assets/partners/9.webp" alt="Tops 88 Car Wash" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="partner-name" style="display:none;">TOPS 88<br>CAR WASH</span>
                 </div>
                 <div class="partner-item">
@@ -383,7 +575,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
-                        <img src="assets/logo/logo.png" alt="ACN Logo">
+                        <img src="assets/logo/logo.webp" alt="ACN Logo">
                         <h3>AUTOCROSS CLUB OF NEGROS</h3>
                     </div>
                     <div class="footer-links">
@@ -410,7 +602,7 @@
                 <p>&copy; 2025 Autocross Club of Negros. All rights reserved.</p>
                 <p class="credit">Prepared and Presented by Skids</p>
                 <div class="dev-credit">
-                    <img src="assets/Jdp/lowgo2.jpg" alt="Website by Skids">
+                    <img src="assets/Jdp/lowgo2.webp" alt="Website by Skids">
                     <span>Website Development by James Dominic Pama</span>
                 </div>
             </div>
@@ -517,10 +709,8 @@
         Register Now
     </a>
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="script.min.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .gallery-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  .gallery-item {
+    @apply bg-white rounded-lg overflow-hidden shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .lightbox-overlay {
+    @apply backdrop-blur-sm;
+  }
+  
+  .btn-primary {
+    @apply bg-autocross-600 hover:bg-autocross-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-autocross-700 hover:bg-gray-50 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 border border-autocross-200;
+  }
+}

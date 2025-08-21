@@ -1,0 +1,68 @@
+# Environment Variables and Configuration
+.env
+config.env
+*.env
+.env.local
+.env.development
+.env.production
+
+# API Keys and Secrets
+secrets.json
+api-keys.json
+credentials.json
+*.key
+*.pem
+
+# Google Cloud Configuration
+service-account-key.json
+google-credentials.json
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary folders
+tmp/
+temp/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+

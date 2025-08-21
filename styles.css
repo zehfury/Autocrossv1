@@ -4931,6 +4931,455 @@ nav .logo:hover {
 
 }
 
+/* Track Location Section */
+.track-location-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    position: relative;
+}
+
+.track-location-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.track-location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.track-info {
+    padding-right: 40px;
+}
+
+.track-details h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+.track-details p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.track-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-green);
+    transform: translateY(-2px);
+}
+
+.feature-item i {
+    font-size: 1.2rem;
+    color: var(--primary-orange);
+    width: 20px;
+    text-align: center;
+}
+
+.feature-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #f0f0f0;
+}
+
+.track-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.track-actions .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.track-map-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-map {
+    width: 100%;
+    height: 400px;
+    background: #2a2a2a;
+    position: relative;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.map-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.map-control-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* Ensure map control button text is visible */
+.map-control-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.map-control-btn:hover::after {
+    opacity: 1;
+}
+
+.map-control-btn:hover {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    transform: scale(1.05);
+}
+
+.map-control-btn.active {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.map-control-btn i {
+    font-size: 1rem;
+}
+
+/* Fullscreen map styles - True horizontal/landscape orientation */
+.track-map.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    border-radius: 0;
+    /* Force landscape orientation */
+    transform: rotate(0deg);
+    /* Ensure proper sizing for landscape */
+    min-height: 100vh;
+    min-width: 100vw;
+    /* Remove aspect-ratio constraint that was causing vertical stretching */
+    aspect-ratio: auto;
+    /* Center the map content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Ensure map content fills the fullscreen container */
+.track-map.fullscreen > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Google Maps Info Window Styling */
+.gm-style .gm-style-iw-c {
+    background: white !important;
+    color: black !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.gm-style .gm-style-iw-d {
+    background: white !important;
+    color: black !important;
+}
+
+.gm-style .gm-style-iw-t::after {
+    background: white !important;
+}
+
+/* Ensure text in info window is visible */
+.gm-style .gm-style-iw-c * {
+    color: inherit !important;
+}
+
+.gm-style .gm-style-iw-c h3 {
+    color: #01764F !important;
+}
+
+.gm-style .gm-style-iw-c p {
+    color: #333 !important;
+}
+
+/* Google Maps Control Panel Styling */
+.gm-style .gm-control-active {
+    background: white !important;
+    color: black !important;
+}
+
+.gm-style .gm-control-active > div {
+    background: white !important;
+    color: black !important;
+}
+
+.gm-style .gm-control-active span {
+    color: black !important;
+}
+
+.gm-style .gm-control-active label {
+    color: black !important;
+}
+
+/* Map type controls */
+.gm-style .gm-style-mtc {
+    background: white !important;
+    color: black !important;
+}
+
+.gm-style .gm-style-mtc button {
+    background: white !important;
+    color: black !important;
+}
+
+.gm-style .gm-style-mtc button span {
+    color: black !important;
+}
+
+.gm-style .gm-style-mtc div {
+    background: white !important;
+    color: black !important;
+}
+
+/* Terrain checkbox and labels */
+.gm-style .gm-style-mtc label {
+    color: black !important;
+}
+
+.gm-style .gm-style-mtc input[type="checkbox"] + span {
+    color: black !important;
+}
+
+/* All text elements in map controls */
+.gm-style .gm-style-mtc * {
+    color: black !important;
+}
+
+/* Exit Fullscreen Button */
+.exit-fullscreen-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10000;
+    display: none; /* Hidden by default */
+    pointer-events: auto;
+}
+
+.exit-btn {
+    background: rgba(220, 53, 69, 0.9);
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 140px;
+}
+
+.exit-btn:hover {
+    background: rgba(220, 53, 69, 1);
+    border-color: #dc3545;
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+.exit-btn i {
+    font-size: 16px;
+}
+
+.exit-btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Show exit button only in fullscreen mode */
+.track-map.fullscreen .exit-fullscreen-btn,
+.exit-fullscreen-btn.fullscreen-active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10000 !important;
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+}
+
+/* Force exit button visibility in fullscreen */
+.track-map.fullscreen .exit-fullscreen-btn .exit-btn,
+.exit-fullscreen-btn.fullscreen-active .exit-btn {
+    background: #dc3545 !important;
+    border: 3px solid #fff !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+    font-size: 16px !important;
+    padding: 15px 20px !important;
+    min-width: 160px !important;
+}
+
+/* Ensure exit button is always on top */
+.exit-fullscreen-btn.fullscreen-active {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 100000 !important;
+    pointer-events: auto !important;
+}
+
+/* Hide regular fullscreen button when in fullscreen mode */
+.track-map.fullscreen .map-controls #fullscreenBtn {
+    display: none;
+}
+
+.track-map.fullscreen .map-overlay {
+    top: 20px;
+    right: 20px;
+}
+
+/* Mobile responsive styles for track location */
+@media (max-width: 768px) {
+    .track-location-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .track-info {
+        padding-right: 0;
+        order: 2;
+        width: 100%;
+    }
+    
+    .track-details {
+        width: 100%;
+    }
+    
+    .track-map-container {
+        order: 1;
+    }
+    
+    .track-features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .feature-item {
+        width: 100%;
+        padding: 15px 20px;
+    }
+    
+    .track-actions {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .track-actions .btn {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .track-map {
+        height: 300px;
+    }
+    
+    .map-controls {
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .map-control-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
 /* Partners Section */
 .partners-section {
     background: #333333 !important;

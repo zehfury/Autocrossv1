@@ -962,8 +962,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Collections Section Functionality
     initializeCollectionsSection();
     
-    // Initialize Swiper Carousels
+    // Initialize Swiper Carousels - ensure Swiper is loaded first
+if (typeof Swiper !== 'undefined') {
     initializeSwiperCarousels();
+} else {
+    // Wait for Swiper to load
+    window.addEventListener('load', function() {
+        if (typeof Swiper !== 'undefined') {
+            initializeSwiperCarousels();
+        } else {
+            console.error('Swiper not loaded');
+        }
+    });
+}
 });
 
 // Drivers/Teams Section JavaScript
@@ -1068,11 +1079,22 @@ function initializeCollectionsSection() {
 
 // Swiper Carousel Initialization
 function initializeSwiperCarousels() {
+    console.log('initializeSwiperCarousels called');
+    console.log('Swiper available:', typeof Swiper !== 'undefined');
+    
+    // Check if carousel elements exist
+    const tshirtsCarousel = document.querySelector('.tshirts-carousel');
+    const polosCarousel = document.querySelector('.polos-carousel');
+    console.log('T-shirts carousel element:', tshirtsCarousel);
+    console.log('Polo shirts carousel element:', polosCarousel);
+    
     // Destroy any existing Swiper instances first
     if (window.tshirtsSwiper) {
+        console.log('Destroying existing T-shirts Swiper');
         window.tshirtsSwiper.destroy(true, true);
     }
     if (window.polosSwiper) {
+        console.log('Destroying existing Polo shirts Swiper');
         window.polosSwiper.destroy(true, true);
     }
 
@@ -1308,47 +1330,239 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// T-Shirt Swiper
+// ===== GOOGLE MAPS INTEGRATION =====
+let map, marker, infoWindow;
+let isFullscreen = false;
+
+// Track location coordinates from config
+const TRACK_LOCATION = CONFIG.TRACK_LOCATION;
+
+// Initialize Google Maps
+function initMap() {
+    // Create map instance
+    map = new google.maps.Map(document.getElementById('trackMap'), {
+        center: TRACK_LOCATION,
+        zoom: CONFIG.MAP_CONFIG.zoom,
+        mapTypeId: google.maps.MapTypeId[CONFIG.MAP_CONFIG.mapTypeId.toUpperCase()],
+        styles: CONFIG.MAP_CONFIG.styles
+    });
+    
+    // Create custom marker
+    marker = new google.maps.Marker({
+        position: TRACK_LOCATION,
+        map: map,
+        title: CONFIG.TRACK_LOCATION.name,
+        icon: {
+            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" fill="#01764F" stroke="#F18A1F" stroke-width="2"/>
+                    <path d="M20 8 L24 16 L32 16 L26 22 L28 30 L20 26 L12 30 L14 22 L8 16 L16 16 Z" fill="#F18A1F"/>
+                    <text x="20" y="25" text-anchor="middle" fill="white" font-size="8" font-weight="bold">ACN</text>
+                </svg>
+            `),
+            scaledSize: new google.maps.Size(40, 40),
+            anchor: new google.maps.Point(20, 20)
+        },
+        animation: google.maps.Animation.DROP
+    });
+    
+    // Create info window
+    infoWindow = new google.maps.InfoWindow({
+        content: `
+            <div style="padding: 10px; max-width: 250px; background: white; color: black;">
+                <h3 style="margin: 0 0 8px 0; color: #01764F; font-size: 16px;">🏁 ${CONFIG.TRACK_LOCATION.name}</h3>
+                <p style="margin: 0 0 8px 0; font-size: 14px; color: #333;">${CONFIG.TRACK_LOCATION.address}</p>
+                <p style="margin: 0; font-size: 12px; color: #666;">
+                    State-of-the-art autocross facility with multiple course layouts, 
+                    safety equipment, and spectator viewing areas.
+                </p>
+                <div style="margin-top: 10px;">
+                    <button onclick="getDirections()" style="
+                        background: #01764F; 
+                        color: white; 
+                        border: none; 
+                        padding: 8px 12px; 
+                        border-radius: 4px; 
+                        cursor: pointer;
+                        font-size: 12px;
+                    ">Get Directions</button>
+                </div>
+            </div>
+        `
+    });
+    
+    // Add click event to marker
+    marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+    });
+    
+    // Add double-click event to marker for directions
+    marker.addListener('dblclick', () => {
+        getDirections();
+    });
+}
+
+// Get directions function
+function getDirections() {
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${TRACK_LOCATION.lat},${TRACK_LOCATION.lng}&travelmode=driving`;
+    window.open(url, '_blank');
+}
+
+// Toggle satellite view
+function toggleSatelliteView() {
+    const mapType = map.getMapTypeId();
+    const newMapType = mapType === google.maps.MapTypeId.SATELLITE ? 
+        google.maps.MapTypeId.ROADMAP : google.maps.MapTypeId.SATELLITE;
+    
+    map.setMapTypeId(newMapType);
+    
+    // Update button state
+    const satelliteBtn = document.getElementById('satelliteBtn');
+    satelliteBtn.classList.toggle('active', newMapType === google.maps.MapTypeId.SATELLITE);
+}
+
+// Toggle street view
+function toggleStreetView() {
+    const streetView = map.getStreetView();
+    const isVisible = streetView.getVisible();
+    streetView.setVisible(!isVisible);
+    
+    if (!isVisible) {
+        streetView.setPosition(TRACK_LOCATION);
+    }
+    
+    // Update button state
+    const streetBtn = document.getElementById('streetBtn');
+    streetBtn.classList.toggle('active', !isVisible);
+}
+
+// Toggle fullscreen
+function toggleFullscreen() {
+    const mapContainer = document.getElementById('trackMap');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+    
+    if (!isFullscreen) {
+        mapContainer.classList.add('fullscreen');
+        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+        
+        // Make exit button visible with multiple approaches
+        exitFullscreenBtn.style.display = 'block';
+        exitFullscreenBtn.style.opacity = '1';
+        exitFullscreenBtn.style.visibility = 'visible';
+        exitFullscreenBtn.style.position = 'fixed';
+        exitFullscreenBtn.style.top = '20px';
+        exitFullscreenBtn.style.left = '20px';
+        exitFullscreenBtn.style.zIndex = '10000';
+        exitFullscreenBtn.classList.add('fullscreen-active');
+        
+        // Move exit button to body for better visibility
+        document.body.appendChild(exitFullscreenBtn);
+        
+        isFullscreen = true;
+        console.log('Entered fullscreen mode, exit button should be visible');
+        
+        // Set landscape-friendly zoom and center
+        setTimeout(() => {
+            map.setZoom(Math.max(map.getZoom(), 14)); // Ensure good zoom level for landscape
+            google.maps.event.trigger(map, 'resize');
+        }, 100);
+    } else {
+        exitFullscreen();
+    }
+}
+
+// Exit fullscreen function
+function exitFullscreen() {
+    const mapContainer = document.getElementById('trackMap');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+    const trackLocationSection = document.querySelector('.track-location-section');
+    
+    mapContainer.classList.remove('fullscreen');
+    fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+    
+    // Hide exit button
+    exitFullscreenBtn.style.display = 'none';
+    exitFullscreenBtn.style.opacity = '0';
+    exitFullscreenBtn.style.visibility = 'hidden';
+    exitFullscreenBtn.classList.remove('fullscreen-active');
+    
+    // Move exit button back to original location
+    if (trackLocationSection) {
+        trackLocationSection.appendChild(exitFullscreenBtn);
+    }
+    
+    isFullscreen = false;
+    
+    // Restore original view
+    setTimeout(() => {
+        google.maps.event.trigger(map, 'resize');
+    }, 100);
+}
+
+// Initialize map when page loads
 document.addEventListener('DOMContentLoaded', function() {
-  new Swiper('.tshirt-swiper', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 1.3,
-    loop: true,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 60,
-      depth: 200,
-      modifier: 1.5,
-      slideShadows: false,
-      scale: 0.85,
-    },
-    pagination: {
-      el: '.tshirt-swiper .swiper-pagination',
-      clickable: true,
-    },
-    navigation: false,
-  });
-  // Polo Swiper
-  new Swiper('.polo-swiper', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 1.3,
-    loop: true,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 60,
-      depth: 200,
-      modifier: 1.5,
-      slideShadows: false,
-      scale: 0.85,
-    },
-    pagination: {
-      el: '.polo-swiper .swiper-pagination',
-      clickable: true,
-    },
-    navigation: false,
-  });
+    // Initialize map if Google Maps API is loaded
+    if (typeof google !== 'undefined' && google.maps) {
+        initMap();
+    } else {
+        // Wait for Google Maps API to load
+        window.addEventListener('load', initMap);
+    }
+    
+    // Add event listeners for map controls
+    const satelliteBtn = document.getElementById('satelliteBtn');
+    const streetBtn = document.getElementById('streetBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const getDirectionsBtn = document.getElementById('getDirectionsBtn');
+    const trackInfoBtn = document.getElementById('trackInfoBtn');
+    
+    if (satelliteBtn) satelliteBtn.addEventListener('click', toggleSatelliteView);
+    if (streetBtn) streetBtn.addEventListener('click', toggleStreetView);
+    if (fullscreenBtn) fullscreenBtn.addEventListener('click', toggleFullscreen);
+    
+    // Exit fullscreen button
+    const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+    if (exitFullscreenBtn) exitFullscreenBtn.addEventListener('click', exitFullscreen);
+    
+    if (getDirectionsBtn) getDirectionsBtn.addEventListener('click', getDirections);
+    if (trackInfoBtn) trackInfoBtn.addEventListener('click', () => {
+        if (infoWindow && marker) {
+            infoWindow.open(map, marker);
+            // Ensure info window is visible in fullscreen mode
+            if (isFullscreen) {
+                setTimeout(() => {
+                    google.maps.event.trigger(map, 'resize');
+                }, 100);
+            }
+        }
+    });
+    
+    // Add keyboard support for fullscreen
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isFullscreen) {
+            exitFullscreen();
+        }
+    });
+});
+
+// Global function for directions (accessible from info window)
+window.getDirections = getDirections;
+
+// Fallback Swiper initialization - ensure it runs after everything is loaded
+window.addEventListener('load', function() {
+    if (typeof Swiper !== 'undefined') {
+        // Check if carousels are already initialized
+        if (!window.tshirtsSwiper && document.querySelector('.tshirts-carousel')) {
+            console.log('Initializing T-shirts carousel (fallback)');
+            initializeSwiperCarousels();
+        }
+        if (!window.polosSwiper && document.querySelector('.polos-carousel')) {
+            console.log('Initializing Polo shirts carousel (fallback)');
+            initializeSwiperCarousels();
+        }
+    } else {
+        console.error('Swiper library not available');
+    }
 });
