@@ -103,7 +103,7 @@ const eventDetailsClose = document.getElementById('eventDetailsClose');
 const eventData = {
     'racing-dummies': {
         title: 'RACING FOR DUMMIES',
-        image: '/assets/events/poster.jpg',
+        image: '/assets/events/poster.webp',
         description: 'Perfect for beginners! This event is designed to introduce newcomers to the exciting world of autocross racing. Learn the basics of car control, racing techniques, and safety protocols in a supportive environment.',
         date: 'August 30-31, 2025',
         location: 'Negros Occidental Racing Circuit',
@@ -181,7 +181,7 @@ const eventData = {
     },
     'daddies-day': {
         title: 'DADDIES DAY OUT AUTOCROSS',
-        image: '/assets/events/daddies.jpg',
+        image: '/assets/events/daddies.webp',
         description: 'A special event celebrating fathers and their passion for cars! Bring your family and enjoy a day of friendly competition, car shows, and family activities. Perfect for bonding over shared automotive enthusiasm.',
         date: 'June 14-15, 2025',
         location: 'Negros Occidental Racing Circuit',
@@ -256,7 +256,7 @@ const eventData = {
     },
     'gymkhana-championship': {
         title: 'GYMKHANA CHAMPIONSHIP',
-        image: '/assets/events/championship.jpg',
+        image: '/assets/events/championship.webp',
         description: 'The premier autocross championship event! Compete against the best drivers in the region for the ultimate title. This high-stakes competition features challenging courses, professional timing, and prestigious awards.',
         date: 'November 22-23, 2024',
         location: 'Negros Occidental Racing Circuit',
@@ -338,7 +338,7 @@ const eventData = {
     },
     'special-module': {
         title: 'SPECIAL MODULE',
-        image: '/assets/events/specialmodule.jpg',
+        image: '/assets/events/specialmodule.webp',
         description: 'An exclusive training module designed for advanced drivers looking to perfect their skills. This intensive program includes professional instruction, advanced techniques, and personalized coaching.',
         date: 'July 6-7, 2024',
         location: 'Negros Occidental Racing Circuit',
